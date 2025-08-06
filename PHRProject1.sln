@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36221.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APIGW", "PHRProject1\APIGW.csproj", "{D79149B7-15BD-42D6-9EEA-AF82DFFEB829}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APIMFA", "API_MFA2SHU\APIWHD\APIMFA.csproj", "{7BD92EFF-AFE9-38C4-25FE-ACD456DA5C12}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAPI", "API_CARBCALC\WebAPI\WebAPI.csproj", "{9A17329B-C1EC-A782-32A2-A8E3D73327D1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebSystem", "API_CARBCALC\WebSystem\WebSystem.csproj", "{F84243F9-C251-037D-0D97-7B36EA7E8AAE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APIWHD", "API_WHD\APIWHD\APIWHD.csproj", "{D0935B48-0423-C5F8-06C5-F528980F7A7A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APIBroadcast", "..\PHR_ProjectGateway\BackendAPIs\API_Broadcast\APIWHD\APIBroadcast.csproj", "{C7EE86A4-471B-F6CF-96D8-960B646C10C9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D79149B7-15BD-42D6-9EEA-AF82DFFEB829}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D79149B7-15BD-42D6-9EEA-AF82DFFEB829}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D79149B7-15BD-42D6-9EEA-AF82DFFEB829}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D79149B7-15BD-42D6-9EEA-AF82DFFEB829}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7BD92EFF-AFE9-38C4-25FE-ACD456DA5C12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7BD92EFF-AFE9-38C4-25FE-ACD456DA5C12}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7BD92EFF-AFE9-38C4-25FE-ACD456DA5C12}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7BD92EFF-AFE9-38C4-25FE-ACD456DA5C12}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A17329B-C1EC-A782-32A2-A8E3D73327D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A17329B-C1EC-A782-32A2-A8E3D73327D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A17329B-C1EC-A782-32A2-A8E3D73327D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A17329B-C1EC-A782-32A2-A8E3D73327D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F84243F9-C251-037D-0D97-7B36EA7E8AAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F84243F9-C251-037D-0D97-7B36EA7E8AAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F84243F9-C251-037D-0D97-7B36EA7E8AAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F84243F9-C251-037D-0D97-7B36EA7E8AAE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D0935B48-0423-C5F8-06C5-F528980F7A7A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0935B48-0423-C5F8-06C5-F528980F7A7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0935B48-0423-C5F8-06C5-F528980F7A7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0935B48-0423-C5F8-06C5-F528980F7A7A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C7EE86A4-471B-F6CF-96D8-960B646C10C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7EE86A4-471B-F6CF-96D8-960B646C10C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7EE86A4-471B-F6CF-96D8-960B646C10C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7EE86A4-471B-F6CF-96D8-960B646C10C9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {989FE08F-37F4-420C-89D7-976E7B077DF7}
+	EndGlobalSection
+EndGlobal

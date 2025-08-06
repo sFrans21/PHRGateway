@@ -1,0 +1,163 @@
+﻿@model WebSystem.Models.TblTUser
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<style>
+    .span-calc {
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+    .label-calc {
+        font-size: 20px;
+    }
+
+    .input-label {
+        background: rgba(0, 0, 0, 0);
+        border: none;
+        text-align: center;
+    }
+</style>
+
+<div class="d-flex justify-content-center pt-4">
+    <div class="card text-white bg-danger" style="width: 12rem;">
+        <div class="card-body text-center" style="padding: 0.25rem;">
+            @*<p class="card-text"><i class="fa fa-calendar"></i> @ViewBag.periodedetail</p>*@
+            <a class="btn text-white" asp-controller="Periode" asp-action="Index"><i class="fa fa-calendar"></i> @ViewBag.periodedetail</a>
+        </div>
+    </div>
+</div>
+
+<div class="text-center">
+    <h2>Hai, @ViewBag.Displayname</h2>
+    <h3>Hitung emisi serapan karbon kamu</h3>
+</div>
+
+<nav>
+    <div class="nav nav-tabs nav-pills nav-justified flex-sm-row" id="nav-tab" role="tablist">
+        @*<a class="nav-item nav-link active" id="nav-rumah-tab" data-toggle="tab" href="#nav-rumah" role="tab" aria-controls="nav-rumah" aria-selected="true" idSpan="1" spanName="karbon di tempat tinggal"><i class="fa fa-house"></i> Rumah</a>
+        <a class="nav-item nav-link disabled" id="nav-kendaraan-tab" href="#nav-kendaraan" role="tab" aria-controls="nav-kendaraan" aria-selected="false" idSpan="1" spanName="karbon kendaraan"><i class="fa fa-car"></i> Kendaraan</a>
+        <a class="nav-item nav-link disabled" id="nav-serapan-tab" href="#nav-serapan" role="tab" aria-controls="nav-serapan" aria-selected="false" idSpan="1" spanName="serapan karbon"><i class="fa fa-tree"></i> Serapan Karbon</a>*@
+        <a class="nav-item nav-link disabled" asp-controller="Household" asp-action="Index"><i class="fa fa-house"></i> Rumah</a>
+        <a class="nav-item nav-link disabled" asp-controller="Vehicle" asp-action="Index"><i class="fa fa-car"></i> Kendaraan</a>
+        <a class="nav-item nav-link active" asp-controller="CarbonAbsorption" asp-action="Index"><i class="fa fa-tree"></i> Serapan Karbon</a>
+    </div>
+</nav>
+
+<div class="tab-content" id="nav-tabContent">
+
+    @*tempat tinggal*@
+    <div class="tab-pane fade" id="nav-rumah" role="tabpanel" aria-labelledby="nav-rumah-tab">
+        <div class="row" style="margin-top: 50px">
+            <div class="col-md-12">
+                <
+              
+    </div>
+
+    @*kendaraan*@
+    <div class="tab-pane fade" id="nav-kendaraan" role="tabpanel" aria-labelledby="nav-kendaraan-tab"></div>
+
+    @*serapan karbon*@
+    <div class="tab-pane fade show active" id="nav-serapan" role="tabpanel" aria-labelledby="nav-serapan-tab"></div>
+                      <a class="btn btn-light" asp-action="Index">Kembali</a>
+                            </div>
+                        </div>
+                    </div>
+            <form asp-action="Edit" method="post">
+    <div id="variabel">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Jenis Tanaman</label>
+                    <!-- <input asp-for="TreeId" class="form-control" placeholder="Input here" /> -->
+                    <select asp-for="Company" class="form-control">
+                        <option value="1">Pertamina Hulu Rokan</option>
+                        <option value="2">Pertamina EP</option>
+                        <option value="3">Pertamina Hulu Energi</option>
+                        <option value="4">PHI</option>
+                        <option value="5">PPC</option>                        
+                    </select>
+                    <span asp-validation-for="Company" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Regional</label>
+                    <input asp-for="Regional" class="form-control" placeholder="Input here" />
+                    <span asp-validation-for="Regional" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row" hidden>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Zona</label>
+                    <input asp-for="Zona" class="form-control" placeholder="Input here" />
+                    <span asp-validation-for="Zona" class="text-danger"></span>
+                </div>
+            </div>            
+        </div>
+
+        <div class="form-group">
+            <div class="col text-center">
+                <input class="btn btn-primary" id="submit" type="submit" value="Verifikasi" />
+                <a class="btn btn-light" asp-action="Index">Kembali</a>
+            </div>
+        </div>
+    </div>
+                    <div id="kalkulasi">
+
+                        <div class="row text-center">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="label-calc">Company Name</label>
+                                    <div>
+                                        <input asp-for="Company" class="span-calc input-label" type="hidden" disabled />
+                                         <label class="span-calc">
+                            @ViewBag.treeName
+                        </label>
+                                    </div>
+                            <span asp-validation-for="Regional" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                                <div class="col-md-6" hidden>
+                                    <div class="form-group">
+                                        <label class="label-calc">Zona</label>
+                                        <div>
+                                            <input asp-for="Zona" class="span-calc input-label" disabled />
+                                        </div>
+                                        <span asp-validation-for="Zona" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            
+                        </div>
+                        <div class="row text-center">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="label-calc">Field Location</label>
+                                    <div>
+                                        <input asp-for="Field" class="span-calc input-label" disabled />
+                                    </div>
+                                    <span asp-validation-for="Field" class="text-danger"></span>
+                                </div>
+                            </div>
+                            
+                            
+                        </div>
+                        
+                        <div class="form-group">
+                            <div class="col text-center">
+                                <input class="btn btn-primary" type="submit" value="Update" asp-action="Update" />
+                                <a class="btn btn-light" asp-action="Index">Kembali</a>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+</div>
+
+}

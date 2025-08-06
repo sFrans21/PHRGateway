@@ -1,0 +1,150 @@
+﻿
+@{
+    ViewData["Title"] = "Help";
+    Layout = "~/Views/Shared/_LayoutHomeInfoHelp.cshtml";
+}
+
+<style>
+    .imgCol {
+        width: 100% !important;
+        height: auto !important;
+    }
+    .p1 {
+        font-size: 65px;
+        color: #ABC437;
+        margin-bottom: -15px;
+    }
+</style>
+
+<div id="help1">
+    <a asp-controller="Home" asp-action="Index"><img src="/assets/img/Back.png" /></a>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="imgCol">
+                <img src="/assets/img/picture-help1.png" style="height:606px; width:550px;" />
+            </div>
+        </div>
+        <div class="col-md-6">
+            <p class="p1">PERTAMA</p>
+            <h4>EMISI YANG DIHASILKAN</h4>
+            <p class="text-justify">
+                Pada saat pertama kali menggunakan <strong>Carbon Calculator</strong>, kamu perlu melakukan penghitungan dari mana saja emisi gas buang dihasilkan. Diantaranya:
+            </p>
+            <div>
+                <P class="text-justify">
+
+                    <a asp-controller="Household" asp-action="Index"><strong>1. Tempat Tinggal</strong></a><br />
+                    Meliputi konsumsi pemakaian listrik maupun gas.<br />
+                    <a asp-controller="Household" asp-action="Index"><strong>2. Kendaraan</strong></a><br />
+                    Meliputi jenis kendaraan, jumlah penumpang serta jarak tempuh/ frekuensi.
+                    <a asp-controller="Household" asp-action="Index"><strong>3. Serapan Karbon</strong></a><br />
+                    Meliputi penghitungan serapan karbon dari tanaman yang berada di area tempat tinggal.
+                </P>
+            </div>
+            <P class="text-justify">
+                Kemudian serapan karbon berasal dari tanaman yang kamu tanam di sekeliling tempat kamu tinggal (rumah).
+            </P>
+            <div>
+                <a class="btn btn-success float-right text-white" id="page2">Selanjutnya</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="help2">
+    <a asp-controller="Home" asp-action="Index"><img src="/assets/img/Back.png" /></a>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="imgCol">
+                <img src="/assets/img/picture-help2.png" style="height:360px; width:510px;" />
+            </div>
+        </div>
+        <div class="col-md-6">
+            <p class="p1">KEDUA</p>
+            <h4>HITUNG EMISI KAMU</h4>
+            <p class="text-justify">
+                Pada langkah kedua ini, saatnya kamu menghitung besaran emisi karbon serta serapan karbon menggunakan <storng>Carbon Calculator</storng>, pastikan bahwa kamu mengisi kolom yang ada sesuai dengan kondisi saat ini.
+            </p>
+            <P class="text-justify">
+                Sehingga, kamu dapat mengetahui seberapa besar emisi yang kamu hasilkan dari setiap aktivitas yang dilakukan baik saat berada dirumah, berkendara dan berapa besar serapan karbon yang kamu telah lakukan dari setiap tanaman (pohon) yang ditanam.
+            </P>
+            <div>
+                <a class="btn btn-info float-left text-white" id="page1">Sebelumnya</a>
+                <a class="btn btn-success float-right text-white" id="page3">Selanjutnya</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="help3">
+    <a asp-controller="Home" asp-action="Index"><img src="/assets/img/Back.png" /></a>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="imgCol">
+                <img src="/assets/img/picture-help3.png" style="height:360px; width:510px;" />
+            </div>
+        </div>
+        <div class="col-md-6">
+            <p class="p1">KETIGA</p>
+            <h4>RINGKASAN EMISI KAMU</h4>
+            <p class="text-justify">
+                Di tahap terakhir ini atau langkah ketiga, kamu akan mendapatkan ringkasan dari data yang telah kamu submit sebelumnya menggunakan <strong>Carbon Calculator</strong>.
+            </p>
+            <P class="text-justify">
+                Dimana kamu dapat mengetahui apakah kamu sudah hemat atau sebaliknya, yg membuat kamu perlu mengurangi emisi gas buang yg dihasilkan dengan cara melakukan penghematan energi, mengoptimalkan perjalanan menggunakan kendaraan serta menanam pohon atau berdonasi pohon.
+            </P>
+            <div>
+                <a class="btn btn-info float-left text-white" id="page2_2">Sebelumnya</a>
+                <a class="btn btn-success float-right" asp-controller="Periode" asp-action="Index">Hitung Emisi</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{ 
+
+    <script>
+        function HideOnLoad() {
+            $("#help1").show();
+            $("#help2").hide();
+            $("#help3").hide();
+        }
+
+        $(document).ready(function () {
+            HideOnLoad();
+        });
+
+        $(document).ready(function () {
+            $("#page1").click(function () {
+                $("#help1").show(900);
+                $("#help2").hide(900);
+                //$("#help3").hide(500);
+            });
+        });
+
+        $(document).ready(function () {
+            $("#page2").click(function () {
+                $("#help1").hide(900);
+                $("#help2").show(900);
+                //$("#help3").hide(500);
+            });
+        });
+
+        $(document).ready(function () {
+            $("#page3").click(function () {
+                //$("#help1").hide(500);
+                $("#help3").show(900);
+                $("#help2").hide(900);
+            });
+        });
+
+        $(document).ready(function () {
+            $("#page2_2").click(function () {
+                //$("#help1").hide(500);
+                $("#help2").show(900);
+                $("#help3").hide(900);
+            });
+        });
+
+    </script>
+}

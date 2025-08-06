@@ -1,0 +1,130 @@
+﻿
+@{
+    ViewData["Title"] = "Master Kendaraan";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    a.hidelink  {
+        cursor: pointer;
+        color: #0069BA;
+    }
+</style>
+    
+<link href="~/bootstrap-datepicker/css/bootstrap-datepicker.css" rel="stylesheet" />
+
+<div class="text-center">    
+    <h3>Master Kendaraan</h3>
+</div>
+
+
+<div class="tab-content" id="nav-tabContent">
+    
+    @*serapan karbon*@
+    <div class="tab-pane fade show active" id="nav-serapan" role="tabpanel" aria-labelledby="nav-serapan-tab">
+        <div class="pt-4">
+            <a class="btn btn-success mb-3" asp-controller="Admin" asp-action="Create_Vehicle"><i class="fa fa-plus"></i> Tambah</a>
+            <table class="table table-striped table-bordered" id="admin">
+                <thead>
+                    <tr>
+                        <th>                            
+                            Kendaraan
+                        </th>
+                        
+                        <th>
+                            
+                            Gambar
+                        </th>
+                        
+                        <th>Action </th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script>
+        $(function () {
+            $("a.hidelink").each(function (index, element) {
+                var href = $(this).attr("href");
+                $(this).attr("hiddenhref", href);
+                $(this).removeAttr("href");
+            });
+            $("a.hidelink").click(function () {
+                url = $(this).attr("hiddenhref");
+                window.open(url, '_self');
+            })
+        });</script>
+
+    <script type="text/javascript">
+        var UrlAdminTools = '@Url.Action("GetVehicleList", "Admin")';
+        var url = '@Url.Action("Details", "Admin")'
+
+
+        $(document).ready(function () {
+            //$('div[id="nav-rumah"]').on('shown.bs.tab', function (e) {
+            //    $.fn.dataTable.tables({ visible: true, api: true }).columns.adjust();
+            //});
+
+            $('table.table').dataTable({
+                order:[0,'asc'],
+                ajax: {
+                    url: UrlAdminTools,
+                    type: 'GET',
+                    dataType: 'json',
+                    dataSrc: ''
+                },
+                columnDefs: [
+                    { 'targets': [0], 'visible': true, 'searchable': false },
+                    { 'targets': [1], 'visible': true, 'searchable': false },
+                    { 'targets': [2], 'width': '130px' },
+                ],
+                responsive: true,
+                columns: [
+                    { data: 'vehicleName' },//1    
+                    { 
+                        data: 'img',
+                        render: function (data, type, row, meta) {
+                        return '<img src="/assets/Vehicle/' + row.img + '" alt="pic" width="100" />'}
+                    },//3
+                    {
+                        data: 'id',
+                        render: function (data, type, row, meta) {
+                            return '<a class="btn btn-light" style="margin-right:5px;" href="/Admin/Master_Vehicle_Edit/' + row.vehicleId + '"><i class="fa fa-pencil"></i></a>' +
+                                '<a class="btn btn-light" style="margin-right:5px;" href="/Admin/Master_Vehicle_Details/' + row.vehicleId + '" ><i class="fa fa-eye"></i></a>' +
+                                '<a class="btn btn-light" style="margin-right:5px;" href="/Admin/Delete_Vehicle/' + row.vehicleId + '" ><i class="fa fa-trash"></i></a>'
+                                //+ '<a class="btn btn-light" style="margin-right:5px;" href="/Admin/Delete_Vehicle1/' + row.vehicleId + '" ><i class="fa fa-trash"></i></a>'
+                                //'<a class="btn btn-light" style="margin-right:5px;" href="/Admin/Delete_Vehicle/' + row.vehicleId + '" ><i class="fa fa-trash"></i></a>'
+
+                        }
+                    }
+
+                    
+                ],
+            });
+        });
+
+        $(function () {
+        var successMessage = '@TempData["SuccessMessage"]'
+        if (successMessage != '')
+            alertify.success(successMessage);
+        });
+
+        $(function () {
+            var ErrorMessage = '@TempData["ErrorMessage"]'
+            if (ErrorMessage != '')
+                alertify.error(ErrorMessage);
+        });
+
+        function Delete(id) {
+            alertify.confirm('Carbon Calculator', 'Hapus data ?', function () {
+                window.location.href = '@Url.Action("Delete_Tree", "Admin")/' + id;
+            }, null)
+        }
+
+        function showInPopup(id) {
+            window.location.href = '@Url.Action("Details", "Admin")/' + id;
+        }
+    </script>
+}

@@ -1,0 +1,108 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Carbon Calculator</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.12.1/datatables.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+    <link href="~/AlertifyJS/css/alertify.css" rel="stylesheet" />
+    <link href="~/AlertifyJS/css/themes/bootstrap.css" rel="stylesheet" />
+    @*<link href="~/font-awesome/css/all.css" rel="stylesheet" />*@
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <style>
+        body {
+            background-image: url('/assets/img/backgroundinputv2.png');
+            background-position: center;
+            /*background-repeat: no-repeat;*/
+            background-size: cover;
+            margin-bottom: 120px;
+            min-height: 400px;
+            clear: both;
+        }
+        .navbar-nav .dropdown-menu {
+            position: absolute !important;
+            float: none;
+        }
+        
+    </style>
+
+    <!-- disable right click in browser -->
+    <script>
+        window.oncontextmenu = function () {
+            return false;
+        }
+        $(document).keydown(function (event) {
+            if (event.keyCode == 123) {
+                return false;
+            }
+            else if ((event.ctrlKey && event.shiftKey && event.keyCode == 73) || (event.ctrlKey && event.shiftKey && event.keyCode == 74)) {
+                return false;
+            }
+        });
+
+        onkeydown = "if ( ( event.ctrlKey && event.keyCode==67 ) || ( event.ctrlKey && event.keyCode==86 ) || ( event.ctrlKey && event.keyCode==88 ) ){ return false; }";
+    </script>
+
+</head>
+<body>
+
+    <partial name="_header" />
+    <partial name="_userbar" />
+
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            @if (TempData["ErrorMessage"] != null)
+            {
+                <div class="alert alert-danger">
+                    @TempData["ErrorMessage"]
+                </div>
+            }
+            @RenderBody()
+        </main>
+    </div>
+
+    <partial name="_footer" />
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/font-awesome/js/all.js"></script>
+    @*<script src="~/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>*@
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.12.1/datatables.min.js"></script>
+    <script src="~/AlertifyJS/alertify.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+
+    <!-- hide link -->
+    <script>
+        $(function () {
+            $("a.hidelink").each(function (index, element) {
+                var href = $(this).attr("href");
+                $(this).attr("hiddenhref", href);
+                $(this).removeAttr("href");
+            });
+            $("a.hidelink").click(function () {
+                url = $(this).attr("hiddenhref");
+                window.open(url, '_self');
+            })
+        });
+    </script>
+
+    <style>
+        a.hidelink {
+            cursor: pointer;
+            /*color: #0069BA;*/
+            color: #fff;
+            /*background-color: #1b6ec2;*/
+            border-color: #1861ac;
+        }
+    </style>
+
+</body>
+</html>

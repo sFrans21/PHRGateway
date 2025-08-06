@@ -1,0 +1,270 @@
+﻿@*@model IEnumerable<WebSystem.Models.VwPeriode>*@
+
+<style>
+    .main-menu-box {
+        box-sizing: border-box;
+    }
+
+    .flex-container {
+        display: flex;
+        flex-wrap: wrap;
+        font-size: 30px;
+    }
+
+    .flex-item {
+        background-color: darkgrey;
+        padding: 10px;
+        flex: 100%;
+        text-align: left;
+        margin-top: 100px;
+    }
+
+    .p1 {
+        font-size: 65px;
+        color: #ABC437;
+        margin-bottom: -15px;
+    }
+
+    .user-info {
+        display: flex;
+        align-items: center;
+    }
+
+        .user-info h3 {
+            font-weight: 500;
+            font-size: 20px;
+        }
+
+        .user-info p {
+            font-size: 12px;
+        }
+
+        .user-info img {
+            width: 60px;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+
+    .dropdown-menu hr {
+        border: 0;
+        height: 1px;
+        width: 100%;
+        background: #ccc;
+        margin: 15px 0 10px;
+    }
+
+    .dropdown-header {
+        padding: 0px;
+    }
+
+    /*.dropdown-menu {
+        transition: max-height 0.5s;
+    }*/
+
+    .dropdown-menu.show {
+        /*background-color: rgba(153, 153, 153, 0.8);*/
+    }
+
+    .disable-select {
+        user-select: none; /* supported by Chrome and Opera */
+        -webkit-user-select: none; /* Safari */
+        -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+    }
+
+    .menu-item {
+        display: block;
+        width: 100%;
+        padding: 0.25rem 1.5rem;
+        clear: both;
+        font-weight: 400;
+        color: #212529;
+        text-align: inherit;
+        white-space: nowrap;
+        background-color: transparent;
+        border: 0;
+    }
+
+    .imgCol {
+        width: 100% !important;
+        height: auto !important;
+    }
+
+
+    ul {
+        list-style-type: none;
+    }
+
+    .dropdown:hover > .dropdown-menu {
+        display: block;
+    }
+
+    .dropdown-item:hover > .dropdown-menu {
+        display: block;
+    }
+
+    ul li {
+        list-style-type: none;
+        display: inline;
+    }
+
+    .navbar-nav .nav-link {
+        display: inline-block;
+    }
+
+    .ml-auto {
+        display: inline-block !important;
+    }
+
+    .dropdown > .dropdown-toggle:active {
+        pointer-events: none;
+    }
+
+    .navbar-nav .dropdown-menu {
+        position: absolute;
+        float: none;
+    }
+
+    .dropdown-toggle1::after {
+        display: inline-block;
+        margin-left: 0.255em;
+        vertical-align: 0.255em;
+        /*content: "";*/
+        border-top: 0.3em solid;
+        border-right: 0.3em solid transparent;
+        border-bottom: 0;
+        border-left: 0.3em solid transparent;
+    }
+</style>
+
+<div class="text-right" style=" padding-right: 160px;">
+    <div class="dropdown disable-select">
+        @*<a id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <strong>Halo @ViewBag.Displayname</strong>
+                <i class="fa fa-user"></i>
+            </a>
+            <div class="navbar-collapse text-center" id="navbarResponsive">*@
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle1" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <h6 style="font-size: 30px;">Halo @ViewBag.Displayname</h6>
+                    @*<strong>Halo @ViewBag.Displayname</strong>*@
+                    @*<i class="fa fa-user"></i>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-grid-3x3-gap-fill" viewBox="0 0 16 16">
+                        <path d="M1 2a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V2zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1V2zM1 7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V7zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1V7zM1 12a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1v-2zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1v-2zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-2z" />
+                    </svg>*@
+                </a>
+
+                <div class="dropdown-menu" style="padding:15px;" aria-labelledby="navbarDropdownMenuLink">
+                    <div class="user-info">
+                        <img src="/assets/img/pngegg.png" />
+                        <h3 class="text-center">@ViewBag.Displayname <br /><p class="text-center">@ViewBag.asd</p></h3>
+                    </div>
+                    <hr />
+                    @*@ViewBag.IsAdmin*@
+                    @{
+                        //Disable Home & Cetak sertifikat sementara 3 mar 2023
+                        <a class="dropdown-item" href=" /Home/Index/"><i class="fa-solid fa-home"></i> Beranda</a>
+                        <a class="dropdown-item" href=" /Summary/Index/@ViewBag.periodId"><i class="fa-solid fa-award"></i> Cetak Sertifikat</a>
+                        if (ViewBag.IsAdmin == "1") // Admin type = Super Admin, add User Admin and Master feature
+                        {
+
+                            <strong class="dropdown-header">Menu Admin</strong>
+                            <a class="dropdown-item" asp-controller="Report" asp-action="Index"><i class="fa fa-file"></i> Laporan</a>
+                            <div>
+                                <a class="dropdown-item nav-link dropdown-toggle" style="margin-left:25px; width:90%;" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Master Data
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+
+                                    @*<a class="dropdown-item" href="/assets/benchmark/1 Benchmarking Jejak Karbon.pdf" target="_blank">Benchmarks 1</a>*@
+                                    <a class="dropdown-item" asp-controller="Admin" asp-action="Master_User"><i class="fa fa-user-edit"></i> User Administration</a>
+                                    <a class="dropdown-item" asp-controller="Admin" asp-action="Master_Tree"><i class="fa fa-tree"></i> Pohon</a>
+                                    <a class="dropdown-item nav-link dropdown-toggle" style="margin-left:25px; width:90%;" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Kendaraan
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                        <a class="dropdown-item" asp-controller="Admin" asp-action="Master_VehicleFormula"><i class="fa fa-book"></i> Master Formula</a>
+                                        <a class="dropdown-item" asp-controller="Admin" asp-action="Master_VehicleFuel"><i class="fa fa-gas-pump"></i> Bahan Bakar</a>
+                                        <a class="dropdown-item" asp-controller="Admin" asp-action="Master_Vehicle"><i class="fa fa-car"></i> Jenis Kendaraan</a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        }
+
+                        // Admin Regional ==> Admin Field
+                        // Only add menu Laporan
+                        if ((ViewBag.IsAdmin =="2") || (ViewBag.IsAdmin=="3") || (ViewBag.IsAdmin=="4"))
+                        {
+
+                            <strong class="dropdown-header">Menu Admin</strong>
+                            <a class="dropdown-item" asp-controller="Report" asp-action="Index"><i class="fa fa-file"></i> Laporan</a>
+                        }
+                    } 
+                   
+
+                    <strong class="dropdown-header">Menu</strong>
+                    <label class="menu-item" style="margin:0px;"><i class="fa fa-circle-info"></i> Referensi</label>
+
+                    <div>
+                        <a class="dropdown-item nav-link dropdown-toggle" style="margin-left:25px; width:90%;" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Benchmark
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="/assets/benchmark/1 Benchmarking Jejak Karbon.pdf" target="_blank">Benchmarks 1</a>
+                            <a class="dropdown-item" href="/assets/benchmark/2 Benchmark_Jejak karbon_puspitek_2017.pdf" target="_blank">Benchmarks 2</a>
+                            <a class="dropdown-item" href="/assets/benchmark/3 Benchmark_Studi jejak karbon_Jakut_UI_2012.pdf" target="_blank">Benchmarks 3</a>
+                            <a class="dropdown-item" href="/assets/benchmark/4 Benchmark_Global Average Footprint 1990-2005.pdf" target="_blank">Benchmarks 4</a>
+                            <a class="dropdown-item" href="/assets/benchmark/5 Benchmark_List of countries by CO2 per capita.pdf" target="_blank">Benchmarks 5</a>
+                        </div>
+
+                    </div>
+                   
+                    @*<a class="dropdown-item" href="#">Donasi Pohon</a>*@
+                    <strong class="dropdown-header">Pengaturan</strong>
+                    @*<a class="dropdown-item" asp-controller="User" asp-action="UserEdit"><i class="fa fa-user-gear"></i> Informasi Akun</a>*@
+                    <a class="dropdown-item" href="/user/InformasiAkun"><i class="fa fa-user-gear"></i> Informasi Akun</a>
+                    <label class="menu-item" href="#"><i class="fa fa-circle-question"></i> Bantuan</label>
+                    <div style="margin-left:20px;">
+                        <a class="dropdown-item" href="/assets/Usermanual/USER MANUAL CARBON.pdf" target="_blank">Petunjuk Penggunaan</a>
+                    </div>
+                    <hr />
+                    @*<a class="dropdown-item" href="https://sso.phe.pertamina.com/auth/realms/phe/protocol/openid-connect/logout?redirect_uri=http://10.236.227.233:8080/"><i class="fa fa-right-from-bracket"></i> Keluar</a>*@
+                    <a class="dropdown-item" href="@Url.Action("Logout","User")"><i class="fa fa-right-from-bracket"></i> Keluar</a>
+                </div>
+            </li>
+        </ul>
+
+
+    </div>
+</div>
+
+
+@*    <div class="d-flex justify-content-center pt-4">
+        <div class="card text-white bg-danger" style="width: 12rem;">
+            <div class="card-body text-center" style="padding: 0.25rem;">
+                <p class="card-text"><i class="fa fa-calendar"></i>  @ViewBag.periodedetail</p>
+            </div>
+        </div>
+    </div>*@
+
+
+@section scripts {
+
+    @*<script>
+            function openPDFs() {
+                window.open('/assets/benchmark/1 Benchmarking Jejak Karbon.pdf', '_blank');
+                window.open('/assets/benchmark/1 Benchmarking Jejak Karbon.pdf', '_blank');
+            }
+        </script>*@
+    <script>
+        function openMultiple() {
+            window.open('http://www.google.com');
+            window.open('http://www.yahoo.com', 'mywindowName');
+        }
+    </script>
+
+
+
+}

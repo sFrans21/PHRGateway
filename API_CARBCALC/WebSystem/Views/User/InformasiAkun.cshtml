@@ -1,0 +1,86 @@
+﻿@model WebSystem.Models.TblTUser
+
+@{
+    ViewData["Title"] = "Informasi Akun";
+}
+
+<style>
+    .span-calc {
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+    .label-calc {
+        font-size: 20px;
+    }
+
+    .input-label {
+        background: rgba(0, 0, 0, 0);
+        border: none;
+        text-align: center;
+    }
+</style>
+
+
+<div style="padding-top:10rem;">
+    <div class="text-center">
+        <h2>Hai, @ViewBag.Displayname</h2>
+        <h3>Berikut data profile anda</h3>
+    </div>
+
+</div>
+
+
+<form asp-action="Konfirmasi" method="post">
+    <div id="variabel">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Company</label>
+           
+                    <select asp-for="Company" class="form-control" asp-items="@ViewBag.Company"></select>
+                    <input asp-for="Company" class="form-control" hidden />
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Regional</label>
+                   <select asp-for="Regional" class="form-control" asp-items="@ViewBag.Regional"></select>
+                    <input asp-for="Regional" class="form-control" hidden />
+                                
+                </div>
+            </div>
+        
+       
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Zona</label>
+                    <select asp-for="Zona" class="form-control" asp-items="@ViewBag.Zona"></select>
+                    <input asp-for="Zona" class="form-control" hidden />
+              
+                </div>
+            </div>     
+            
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Field</label>
+                    <select asp-for="Field" class="form-control" asp-items="@ViewBag.Field"></select>
+                    <input asp-for="Field" class="form-control" hidden />
+           
+                </div>
+            </div>  
+
+        </div>
+        
+
+        <div class="form-group">
+            <div class="col text-center">
+                <input class="btn btn-primary" id="submit" type="submit" value="Konfirmasi" />
+                <a class="btn btn-light" asp-controller="Home" asp-action="Index">Kembali</a>
+            </div>
+        </div>
+    </div>                    
+                        
+                        
+ </form>
+

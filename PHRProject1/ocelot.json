@@ -1,0 +1,2379 @@
+{
+  "Routes": [
+    //{
+    //  "DownstreamPathTemplate": "/{everything}",
+    //  "DownstreamScheme": "https",
+    //  "DownstreamHostAndPorts": [
+    //    {
+    //      "Host": "localhost",
+    //      "Port": 44366
+    //    }
+    //  ],
+    //  "UpstreamPathTemplate": "/websystem/{everything}",
+    //  "UpstreamHttpMethod": [ "GET" ],
+    //  "Priority": 0,
+    //  "RateLimitOptions": {
+    //    "EnableRateLimiting": true,
+    //    "Period": "10s",
+    //    "PeriodTimespan": 5,
+    //    "Limit": 3
+    //  }
+    //},
+    {
+      "DownstreamPathTemplate": "/api/Household/GetbyUser/{userId}/{year}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44367
+        }
+      ],
+      "UpstreamPathTemplate": "/webapi/household/getbyuser/{userId}/{year}",
+      "UpstreamHttpMethod": [ "GET" ],
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "10s",
+        "PeriodTimespan": 5,
+        "Limit": 3
+      },
+      "FileCacheOptions": {
+        "TtlSeconds": 15,
+        "Region": "HouseholdCache",
+        "Header": "Cache-Control",
+        "EnableContentHashing": false
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/User/UserLogin",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44366
+        }
+      ],
+      "UpstreamPathTemplate": "/websystem/user/login",
+      "UpstreamHttpMethod": [ "GET", "POST" ],
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "10s",
+        "PeriodTimespan": 5,
+        "Limit": 3
+      },
+      "Priority": 1,
+      "FileCacheOptions": {
+        "TtlSeconds": 15,
+        "Region": "HouseholdCache",
+        "Header": "Cache-Control",
+        "EnableContentHashing": false
+      }
+    },
+
+    // --- Rute untuk APICarbonCalculator (Port 44366) ---
+
+    {
+      "DownstreamPathTemplate": "/swagger/{everything}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44366
+        }
+      ],
+      "UpstreamPathTemplate": "/carbon/swagger/{everything}",
+      "UpstreamHttpMethod": [ "GET" ],
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "10s",
+        "PeriodTimespan": 5,
+        "Limit": 3
+      },
+      "FileCacheOptions": {
+        "TtlSeconds": 15,
+        "Region": "HouseholdCache",
+        "Header": "Cache-Control",
+        "EnableContentHashing": false
+      }
+    },
+
+    {
+      "DownstreamPathTemplate": "/swagger/{everything}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44367
+        }
+      ],
+      "UpstreamPathTemplate": "/webapi/swagger/{everything}",
+      "UpstreamHttpMethod": [ "GET" ],
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "10s",
+        "PeriodTimespan": 5,
+        "Limit": 3
+      },
+      "FileCacheOptions": {
+        "TtlSeconds": 15,
+        "Region": "HouseholdCache",
+        "Header": "Cache-Control",
+        "EnableContentHashing": false
+      }
+    },
+
+    {
+      "DownstreamPathTemplate": "/GetListSummary",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44366
+        }
+      ],
+      "UpstreamPathTemplate": "/carbon/summary",
+      "UpstreamHttpMethod": [ "GET" ],
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "10s",
+        "PeriodTimespan": 5,
+        "Limit": 3
+      },
+      "FileCacheOptions": {
+        "TtlSeconds": 15,
+        "Region": "HouseholdCache",
+        "Header": "Cache-Control",
+        "EnableContentHashing": false
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/GetListSummary_Chart",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44366
+        }
+      ],
+      "UpstreamPathTemplate": "/carbon/summary/chart",
+      "UpstreamHttpMethod": [ "GET" ],
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "10s",
+        "PeriodTimespan": 5,
+        "Limit": 3
+      },
+      "FileCacheOptions": {
+        "TtlSeconds": 15,
+        "Region": "HouseholdCache",
+        "Header": "Cache-Control",
+        "EnableContentHashing": false
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/GetListReport",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44366
+        }
+      ],
+      "UpstreamPathTemplate": "/carbon/report",
+      "UpstreamHttpMethod": [ "GET" ],
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "10s",
+        "PeriodTimespan": 5,
+        "Limit": 3
+      },
+      "FileCacheOptions": {
+        "TtlSeconds": 15,
+        "Region": "HouseholdCache",
+        "Header": "Cache-Control",
+        "EnableContentHashing": false
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/GetListVehicle",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44366
+        }
+      ],
+      "UpstreamPathTemplate": "/carbon/vehicles",
+      "UpstreamHttpMethod": [ "GET" ],
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "10s",
+        "PeriodTimespan": 5,
+        "Limit": 3
+      },
+      "FileCacheOptions": {
+        "TtlSeconds": 15,
+        "Region": "HouseholdCache",
+        "Header": "Cache-Control",
+        "EnableContentHashing": false
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/GetListUser",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44366
+        }
+      ],
+      "UpstreamPathTemplate": "/carbon/users",
+      "UpstreamHttpMethod": [ "GET" ],
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "10s",
+        "PeriodTimespan": 5,
+        "Limit": 3
+      },
+      "FileCacheOptions": {
+        "TtlSeconds": 15,
+        "Region": "HouseholdCache",
+        "Header": "Cache-Control",
+        "EnableContentHashing": false
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/GalleryVehicle",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44366
+        }
+      ],
+      "UpstreamPathTemplate": "/carbon/gallery/vehicle",
+      "UpstreamHttpMethod": [ "GET" ],
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "10s",
+        "PeriodTimespan": 5,
+        "Limit": 3
+      },
+      "FileCacheOptions": {
+        "TtlSeconds": 15,
+        "Region": "HouseholdCache",
+        "Header": "Cache-Control",
+        "EnableContentHashing": false
+      }
+    },
+
+    // --- Rute untuk APIMFA (Port 44303) ---
+
+    {
+      "DownstreamPathTemplate": "/swagger/{everything}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44303
+        }
+      ],
+      "UpstreamPathTemplate": "/mfa/swagger/{everything}",
+      "UpstreamHttpMethod": [ "GET" ],
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "10s",
+        "PeriodTimespan": 5,
+        "Limit": 3
+      },
+      "FileCacheOptions": {
+        "TtlSeconds": 15,
+        "Region": "HouseholdCache",
+        "Header": "Cache-Control",
+        "EnableContentHashing": false
+      }
+    },
+
+    //{
+    //  "DownstreamPathTemplate": "/configuration",
+    //  "DownstreamScheme": "https",
+    //  "DownstreamHostAndPorts": [
+    //    {
+    //      "Host": "localhost",
+    //      "Port": 44303
+    //    }
+    //  ],
+    //  "UpstreamPathTemplate": "/mfa/configuration",
+    //  "UpstreamHttpMethod": [ "POST" ],
+    //  "RateLimitOptions": {
+    //    "EnableRateLimiting": true,
+    //    "Period": "10s",
+    //    "PeriodTimespan": 5,
+    //    "Limit": 3
+    //  },
+    //  "FileCacheOptions": {
+    //    "TtlSeconds": 15,
+    //    "Region": "HouseholdCache",
+    //    "Header": "Cache-Control",
+    //    "EnableContentHashing": false
+    //  }
+    //},
+
+    {
+      "DownstreamPathTemplate": "/configuration",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44303
+        }
+      ],
+      "UpstreamPathTemplate": "/internal/mfa/config",
+      "UpstreamHttpMethod": [ "GET", "POST" ],
+      "Key": "MfaConfig",
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "10s",
+        "PeriodTimespan": 5,
+        "Limit": 3
+      },
+      "FileCacheOptions": {
+        "TtlSeconds": 15,
+        "Region": "HouseholdCache",
+        "Header": "Cache-Control",
+        "EnableContentHashing": false
+      }
+    },
+
+    {
+      "DownstreamPathTemplate": "/api/MFA/GetOrGenerateMFASecret",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44303
+        }
+      ],
+      "UpstreamPathTemplate": "/mfa/generate-secret",
+      "UpstreamHttpMethod": [ "GET", "POST" ],
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "10s",
+        "PeriodTimespan": 5,
+        "Limit": 3
+      },
+      "FileCacheOptions": {
+        "TtlSeconds": 15,
+        "Region": "HouseholdCache",
+        "Header": "Cache-Control",
+        "EnableContentHashing": false
+      }
+    },
+
+    {
+      "DownstreamPathTemplate": "/api/MFA/ValidateAndPushMFASecret",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44303
+        }
+      ],
+      "UpstreamPathTemplate": "/mfa/validate-secret",
+      "UpstreamHttpMethod": [ "GET", "POST" ],
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "10s",
+        "PeriodTimespan": 5,
+        "Limit": 3
+      },
+      "FileCacheOptions": {
+        "TtlSeconds": 15,
+        "Region": "HouseholdCache",
+        "Header": "Cache-Control",
+        "EnableContentHashing": false
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/outputcache/{region}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44303
+        }
+      ],
+      "UpstreamPathTemplate": "/mfa/cache/{region}",
+      "UpstreamHttpMethod": [ "DELETE" ],
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "10s",
+        "PeriodTimespan": 5,
+        "Limit": 3
+      },
+      "FileCacheOptions": {
+        "TtlSeconds": 15,
+        "Region": "HouseholdCache",
+        "Header": "Cache-Control",
+        "EnableContentHashing": false
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/WeatherForecast",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44303
+        }
+      ],
+      "UpstreamPathTemplate": "/mfa/weatherforecast",
+      "UpstreamHttpMethod": [ "GET" ],
+      "Key": "MfaWeatherForecast",
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "10s",
+        "PeriodTimespan": 5,
+        "Limit": 3
+      },
+      "FileCacheOptions": {
+        "TtlSeconds": 15,
+        "Region": "HouseholdCache",
+        "Header": "Cache-Control",
+        "EnableContentHashing": false
+      }
+    },
+
+    {
+      "DownstreamPathTemplate": "/swagger/{everything}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44304
+        },
+        {
+          "Host": "localhost",
+          "Port": 44305
+        }
+      ],
+      "UpstreamPathTemplate": "/whd/swagger/{everything}",
+      "UpstreamHttpMethod": [ "GET" ],
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "10s",
+        "PeriodTimespan": 5,
+        "Limit": 3
+      },
+      "FileCacheOptions": {
+        "TtlSeconds": 15,
+        "Region": "HouseholdCache",
+        "Header": "Cache-Control",
+        "EnableContentHashing": false
+      }
+    },
+
+    {
+      "DownstreamPathTemplate": "/api/Broadcast/Getlist",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44304
+        },
+        {
+          "Host": "localhost",
+          "Port": 44305
+        }
+      ],
+      "UpstreamPathTemplate": "/whd/broadcast/list",
+      "UpstreamHttpMethod": [ "GET" ],
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      },
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "10s",
+        "PeriodTimespan": 5,
+        "Limit": 3
+      },
+      "FileCacheOptions": {
+        "TtlSeconds": 15,
+        "Region": "HouseholdCache",
+        "Header": "Cache-Control",
+        "EnableContentHashing": false
+      }
+    },
+
+    {
+      "DownstreamPathTemplate": "/api/Broadcast/GetById/{Id}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44304
+        },
+        {
+          "Host": "localhost",
+          "Port": 44305
+        }
+      ],
+      "UpstreamPathTemplate": "/whd/broadcast/{Id}",
+      "UpstreamHttpMethod": [ "GET" ],
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      },
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "10s",
+        "PeriodTimespan": 5,
+        "Limit": 3
+      },
+      "FileCacheOptions": {
+        "TtlSeconds": 15,
+        "Region": "HouseholdCache",
+        "Header": "Cache-Control",
+        "EnableContentHashing": false
+      }
+    },
+
+    {
+      "DownstreamPathTemplate": "/api/Broadcast/DeleteExpiredBroadcasts",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44304
+        },
+        {
+          "Host": "localhost",
+          "Port": 44305
+        }
+      ],
+      "UpstreamPathTemplate": "/whd/broadcast/delete-expired",
+      "UpstreamHttpMethod": [ "DELETE" ],
+      "Key": "DeleteExpiredWhdBroadcasts",
+      "LoadBalancerOptions": { "Type": "RoundRobin" },
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "10s",
+        "PeriodTimespan": 5,
+        "Limit": 3
+      },
+      "FileCacheOptions": {
+        "TtlSeconds": 15,
+        "Region": "HouseholdCache",
+        "Header": "Cache-Control",
+        "EnableContentHashing": false
+      }
+    },
+
+    {
+      "DownstreamPathTemplate": "/api/Broadcast/DeleteFolderName",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44304
+        },
+        {
+          "Host": "localhost",
+          "Port": 44305
+        }
+      ],
+      "UpstreamPathTemplate": "/whd/broadcast/delete-folder",
+      "UpstreamHttpMethod": [ "DELETE" ],
+      "LoadBalancerOptions": { "Type": "RoundRobin" },
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "10s",
+        "PeriodTimespan": 5,
+        "Limit": 3
+      },
+      "FileCacheOptions": {
+        "TtlSeconds": 15,
+        "Region": "HouseholdCache",
+        "Header": "Cache-Control",
+        "EnableContentHashing": false
+      }
+    },
+
+    {
+      "DownstreamPathTemplate": "/api/Calendar/GetList",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44304
+        },
+        {
+          "Host": "localhost",
+          "Port": 44305
+        }
+      ],
+      "UpstreamPathTemplate": "/whd/calendar/list",
+      "UpstreamHttpMethod": [ "GET" ],
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      },
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "10s",
+        "PeriodTimespan": 5,
+        "Limit": 3
+      },
+      "FileCacheOptions": {
+        "TtlSeconds": 15,
+        "Region": "HouseholdCache",
+        "Header": "Cache-Control",
+        "EnableContentHashing": false
+      }
+    },
+
+    {
+      "DownstreamPathTemplate": "/api/Calendar/GetById/{Id}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44304
+        },
+        {
+          "Host": "localhost",
+          "Port": 44305
+        }
+      ],
+      "UpstreamPathTemplate": "/whd/calendar/{Id}",
+      "UpstreamHttpMethod": [ "GET" ],
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      },
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "10s",
+        "PeriodTimespan": 5,
+        "Limit": 3
+      },
+      "FileCacheOptions": {
+        "TtlSeconds": 15,
+        "Region": "HouseholdCache",
+        "Header": "Cache-Control",
+        "EnableContentHashing": false
+      }
+    },
+
+    {
+      "DownstreamPathTemplate": "/api/CoorporateNews/GetList",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44304
+        },
+        {
+          "Host": "localhost",
+          "Port": 44305
+        }
+      ],
+      "UpstreamPathTemplate": "/whd/corporatenews/list",
+      "UpstreamHttpMethod": [ "GET" ],
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      },
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "10s",
+        "PeriodTimespan": 5,
+        "Limit": 3
+      },
+      "FileCacheOptions": {
+        "TtlSeconds": 15,
+        "Region": "HouseholdCache",
+        "Header": "Cache-Control",
+        "EnableContentHashing": false
+      }
+    },
+
+    {
+      "DownstreamPathTemplate": "/api/CoorporateNews/GetById/{Id}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44304
+        },
+        {
+          "Host": "localhost",
+          "Port": 44305
+        }
+      ],
+      "UpstreamPathTemplate": "/whd/corporatenews/{Id}",
+      "UpstreamHttpMethod": [ "GET" ],
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      },
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "10s",
+        "PeriodTimespan": 5,
+        "Limit": 3
+      },
+      "FileCacheOptions": {
+        "TtlSeconds": 15,
+        "Region": "HouseholdCache",
+        "Header": "Cache-Control",
+        "EnableContentHashing": false
+      }
+    },
+
+    {
+      "DownstreamPathTemplate": "/api/ExcelExport/basic",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44304
+        },
+        {
+          "Host": "localhost",
+          "Port": 44305
+        }
+      ],
+      "UpstreamPathTemplate": "/whd/excelexport/basicdata",
+      "UpstreamHttpMethod": [ "GET" ],
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      },
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "10s",
+        "PeriodTimespan": 5,
+        "Limit": 3
+      },
+      "FileCacheOptions": {
+        "TtlSeconds": 15,
+        "Region": "HouseholdCache",
+        "Header": "Cache-Control",
+        "EnableContentHashing": false
+      }
+    },
+
+    {
+      "DownstreamPathTemplate": "/api/ExcelExport/GetAlllocal",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44304
+        },
+        {
+          "Host": "localhost",
+          "Port": 44305
+        }
+      ],
+      "UpstreamPathTemplate": "/whd/excelexport/alllocaldata",
+      "UpstreamHttpMethod": [ "GET" ],
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      },
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "10s",
+        "PeriodTimespan": 5,
+        "Limit": 3
+      },
+      "FileCacheOptions": {
+        "TtlSeconds": 15,
+        "Region": "HouseholdCache",
+        "Header": "Cache-Control",
+        "EnableContentHashing": false
+      }
+    },
+
+    {
+      "DownstreamPathTemplate": "/api/ExcelExport/GetAll",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44304
+        },
+        {
+          "Host": "localhost",
+          "Port": 44305
+        }
+      ],
+      "UpstreamPathTemplate": "/whd/excelexport/alldata",
+      "UpstreamHttpMethod": [ "GET" ],
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      },
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "10s",
+        "PeriodTimespan": 5,
+        "Limit": 3
+      },
+      "FileCacheOptions": {
+        "TtlSeconds": 15,
+        "Region": "HouseholdCache",
+        "Header": "Cache-Control",
+        "EnableContentHashing": false
+      }
+    },
+
+    {
+      "DownstreamPathTemplate": "/api/ExcelExport/{username}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44304
+        },
+        {
+          "Host": "localhost",
+          "Port": 44305
+        }
+      ],
+      "UpstreamPathTemplate": "/whd/excelexport/{username}",
+      "UpstreamHttpMethod": [ "GET" ],
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      },
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "10s",
+        "PeriodTimespan": 5,
+        "Limit": 3
+      },
+      "FileCacheOptions": {
+        "TtlSeconds": 15,
+        "Region": "HouseholdCache",
+        "Header": "Cache-Control",
+        "EnableContentHashing": false
+      }
+    },
+
+    {
+      "DownstreamPathTemplate": "/api/ExcelExport/Export",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44304
+        },
+        {
+          "Host": "localhost",
+          "Port": 44305
+        }
+      ],
+      "UpstreamPathTemplate": "/whd/export",
+      "UpstreamHttpMethod": [ "GET", "POST" ],
+      "LoadBalancerOptions": { "Type": "RoundRobin" },
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "10s",
+        "PeriodTimespan": 5,
+        "Limit": 3
+      },
+      "FileCacheOptions": {
+        "TtlSeconds": 15,
+        "Region": "HouseholdCache",
+        "Header": "Cache-Control",
+        "EnableContentHashing": false
+      }
+    },
+
+    {
+      "DownstreamPathTemplate": "/api/Filter/GetWell",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44304
+        },
+        {
+          "Host": "localhost",
+          "Port": 44305
+        }
+      ],
+      "UpstreamPathTemplate": "/whd/filter",
+      "UpstreamHttpMethod": [ "GET" ],
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      },
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "10s",
+        "PeriodTimespan": 5,
+        "Limit": 3
+      },
+      "FileCacheOptions": {
+        "TtlSeconds": 15,
+        "Region": "HouseholdCache",
+        "Header": "Cache-Control",
+        "EnableContentHashing": false
+      }
+    },
+
+    {
+      "DownstreamPathTemplate": "/api/GetWell/GetWellAll",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44304
+        },
+        {
+          "Host": "localhost",
+          "Port": 44305
+        }
+      ],
+      "UpstreamPathTemplate": "/whd/wells/all",
+      "UpstreamHttpMethod": [ "GET" ],
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      },
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "10s",
+        "PeriodTimespan": 5,
+        "Limit": 3
+      },
+      "FileCacheOptions": {
+        "TtlSeconds": 15,
+        "Region": "HouseholdCache",
+        "Header": "Cache-Control",
+        "EnableContentHashing": false
+      }
+    },
+
+    {
+      "DownstreamPathTemplate": "/api/GetWellByRole",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44304
+        },
+        {
+          "Host": "localhost",
+          "Port": 44305
+        }
+      ],
+      "UpstreamPathTemplate": "/whd/GetWellByRole",
+      "UpstreamHttpMethod": [ "GET" ],
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      },
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "10s",
+        "PeriodTimespan": 5,
+        "Limit": 3
+      },
+      "FileCacheOptions": {
+        "TtlSeconds": 15,
+        "Region": "HouseholdCache",
+        "Header": "Cache-Control",
+        "EnableContentHashing": false
+      }
+    },
+
+    {
+      "DownstreamPathTemplate": "/api/GetWellByRole/{userid}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44304
+        },
+        {
+          "Host": "localhost",
+          "Port": 44305
+        }
+      ],
+      "UpstreamPathTemplate": "/whd/GetWellByRole/{userid}",
+      "UpstreamHttpMethod": [ "GET" ],
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      },
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "10s",
+        "PeriodTimespan": 5,
+        "Limit": 3
+      },
+      "FileCacheOptions": {
+        "TtlSeconds": 15,
+        "Region": "HouseholdCache",
+        "Header": "Cache-Control",
+        "EnableContentHashing": false
+      }
+    },
+
+    {
+      "DownstreamPathTemplate": "/api/Master/Role",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44304
+        },
+        {
+          "Host": "localhost",
+          "Port": 44305
+        }
+      ],
+      "UpstreamPathTemplate": "/whd/master/role",
+      "UpstreamHttpMethod": [ "GET" ],
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      },
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "10s",
+        "PeriodTimespan": 5,
+        "Limit": 3
+      },
+      "FileCacheOptions": {
+        "TtlSeconds": 15,
+        "Region": "HouseholdCache",
+        "Header": "Cache-Control",
+        "EnableContentHashing": false
+      }
+    },
+
+    {
+      "DownstreamPathTemplate": "/api/Master/RoleAuth",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44304
+        },
+        {
+          "Host": "localhost",
+          "Port": 44305
+        }
+      ],
+      "UpstreamPathTemplate": "/whd/master/roleauth",
+      "UpstreamHttpMethod": [ "GET" ],
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      },
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "10s",
+        "PeriodTimespan": 5,
+        "Limit": 3
+      },
+      "FileCacheOptions": {
+        "TtlSeconds": 15,
+        "Region": "HouseholdCache",
+        "Header": "Cache-Control",
+        "EnableContentHashing": false
+      }
+    },
+
+    {
+      "DownstreamPathTemplate": "/api/Master/Role/{username}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44304
+        },
+        {
+          "Host": "localhost",
+          "Port": 44305
+        }
+      ],
+      "UpstreamPathTemplate": "/whd/master/role/{username}",
+      "UpstreamHttpMethod": [ "GET" ],
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      },
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "10s",
+        "PeriodTimespan": 5,
+        "Limit": 3
+      },
+      "FileCacheOptions": {
+        "TtlSeconds": 15,
+        "Region": "HouseholdCache",
+        "Header": "Cache-Control",
+        "EnableContentHashing": false
+      }
+    },
+
+    {
+      "DownstreamPathTemplate": "/api/Master/Field",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44304
+        },
+        {
+          "Host": "localhost",
+          "Port": 44305
+        }
+      ],
+      "UpstreamPathTemplate": "/whd/master/field",
+      "UpstreamHttpMethod": [ "GET" ],
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      },
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "10s",
+        "PeriodTimespan": 5,
+        "Limit": 3
+      },
+      "FileCacheOptions": {
+        "TtlSeconds": 15,
+        "Region": "HouseholdCache",
+        "Header": "Cache-Control",
+        "EnableContentHashing": false
+      }
+    },
+
+    {
+      "DownstreamPathTemplate": "/api/Master/Type",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44304
+        },
+        {
+          "Host": "localhost",
+          "Port": 44305
+        }
+      ],
+      "UpstreamPathTemplate": "/whd/master/type",
+      "UpstreamHttpMethod": [ "GET" ],
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      },
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "10s",
+        "PeriodTimespan": 5,
+        "Limit": 3
+      },
+      "FileCacheOptions": {
+        "TtlSeconds": 15,
+        "Region": "HouseholdCache",
+        "Header": "Cache-Control",
+        "EnableContentHashing": false
+      }
+    },
+
+    {
+      "DownstreamPathTemplate": "/api/Master/UserRole",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44304
+        },
+        {
+          "Host": "localhost",
+          "Port": 44305
+        }
+      ],
+      "UpstreamPathTemplate": "/whd/master/userrole",
+      "UpstreamHttpMethod": [ "GET" ],
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      },
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "10s",
+        "PeriodTimespan": 5,
+        "Limit": 3
+      },
+      "FileCacheOptions": {
+        "TtlSeconds": 15,
+        "Region": "HouseholdCache",
+        "Header": "Cache-Control",
+        "EnableContentHashing": false
+      }
+    },
+
+    {
+      "DownstreamPathTemplate": "/api/NewsBroadcast/GetList",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44304
+        },
+        {
+          "Host": "localhost",
+          "Port": 44305
+        }
+      ],
+      "UpstreamPathTemplate": "/whd/newsbroadcast/getlist",
+      "UpstreamHttpMethod": [ "GET" ],
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      },
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "10s",
+        "PeriodTimespan": 5,
+        "Limit": 3
+      },
+      "FileCacheOptions": {
+        "TtlSeconds": 15,
+        "Region": "HouseholdCache",
+        "Header": "Cache-Control",
+        "EnableContentHashing": false
+      }
+    },
+
+    {
+      "DownstreamPathTemplate": "/api/NewsBroadcast/GetById/{Id}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44304
+        },
+        {
+          "Host": "localhost",
+          "Port": 44305
+        }
+      ],
+      "UpstreamPathTemplate": "/whd/newsbroadcast/{Id}",
+      "UpstreamHttpMethod": [ "GET" ],
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      },
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "10s",
+        "PeriodTimespan": 5,
+        "Limit": 3
+      },
+      "FileCacheOptions": {
+        "TtlSeconds": 15,
+        "Region": "HouseholdCache",
+        "Header": "Cache-Control",
+        "EnableContentHashing": false
+      }
+    },
+
+    {
+      "DownstreamPathTemplate": "/api/Sso/Login",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44304
+        },
+        {
+          "Host": "localhost",
+          "Port": 44305
+        }
+      ],
+      "UpstreamPathTemplate": "/whd/sso/login",
+      "UpstreamHttpMethod": [ "GET", "POST" ],
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      },
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "10s",
+        "PeriodTimespan": 5,
+        "Limit": 3
+      },
+      "FileCacheOptions": {
+        "TtlSeconds": 15,
+        "Region": "HouseholdCache",
+        "Header": "Cache-Control",
+        "EnableContentHashing": false
+      }
+    },
+
+    {
+      "DownstreamPathTemplate": "/api/Sso/Logout",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44304
+        },
+        {
+          "Host": "localhost",
+          "Port": 44305
+        }
+      ],
+      "UpstreamPathTemplate": "/whd/sso/logout",
+      "UpstreamHttpMethod": [ "GET", "POST" ],
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      },
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "10s",
+        "PeriodTimespan": 5,
+        "Limit": 3
+      },
+      "FileCacheOptions": {
+        "TtlSeconds": 15,
+        "Region": "HouseholdCache",
+        "Header": "Cache-Control",
+        "EnableContentHashing": false
+      }
+    },
+
+    // TransactionDashboard
+    {
+      "DownstreamPathTemplate": "/api/TransactionDashboard/sp/{username}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44304
+        },
+        {
+          "Host": "localhost",
+          "Port": 44305
+        }
+      ],
+      "UpstreamPathTemplate": "/whd/dashboard/homepage/{username}",
+      "UpstreamHttpMethod": [ "GET" ],
+      "LoadBalancerOptions": { "Type": "RoundRobin" },
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "10s",
+        "PeriodTimespan": 5,
+        "Limit": 3
+      },
+      "FileCacheOptions": {
+        "TtlSeconds": 15,
+        "Region": "HouseholdCache",
+        "Header": "Cache-Control",
+        "EnableContentHashing": false
+      }
+    },
+
+    {
+      "DownstreamPathTemplate": "/api/TransactionDashboard/{username}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44304
+        },
+        {
+          "Host": "localhost",
+          "Port": 44305
+        }
+      ],
+      "UpstreamPathTemplate": "/whd/dashboard/{username}",
+      "UpstreamHttpMethod": [ "GET" ],
+      "LoadBalancerOptions": { "Type": "RoundRobin" },
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "10s",
+        "PeriodTimespan": 5,
+        "Limit": 3
+      },
+      "FileCacheOptions": {
+        "TtlSeconds": 15,
+        "Region": "HouseholdCache",
+        "Header": "Cache-Control",
+        "EnableContentHashing": false
+      }
+    },
+
+    {
+      "DownstreamPathTemplate": "/api/TransactionDashboard/GetAll",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44304
+        },
+        {
+          "Host": "localhost",
+          "Port": 44305
+        }
+      ],
+      "UpstreamPathTemplate": "/whd/dashboard/data",
+      "UpstreamHttpMethod": [ "GET", "POST" ],
+      "LoadBalancerOptions": { "Type": "RoundRobin" },
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "10s",
+        "PeriodTimespan": 5,
+        "Limit": 3
+      },
+      "FileCacheOptions": {
+        "TtlSeconds": 15,
+        "Region": "HouseholdCache",
+        "Header": "Cache-Control",
+        "EnableContentHashing": false
+      }
+    },
+
+    {
+      "DownstreamPathTemplate": "/api/TransactionDashboard/GetById/{transactionId}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44304
+        },
+        {
+          "Host": "localhost",
+          "Port": 44305
+        }
+      ],
+      "UpstreamPathTemplate": "/whd/dashboard/data/{id}",
+      "UpstreamHttpMethod": [ "GET" ],
+      "LoadBalancerOptions": { "Type": "RoundRobin" },
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "10s",
+        "PeriodTimespan": 5,
+        "Limit": 3
+      },
+      "FileCacheOptions": {
+        "TtlSeconds": 15,
+        "Region": "HouseholdCache",
+        "Header": "Cache-Control",
+        "EnableContentHashing": false
+      }
+    },
+
+    {
+      "DownstreamPathTemplate": "/api/TransactionDashboard/upload",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44304
+        },
+        {
+          "Host": "localhost",
+          "Port": 44305
+        }
+      ],
+      "UpstreamPathTemplate": "/whd/dashboard/upload",
+      "UpstreamHttpMethod": [ "GET", "POST" ],
+      "LoadBalancerOptions": { "Type": "RoundRobin" },
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "10s",
+        "PeriodTimespan": 5,
+        "Limit": 3
+      },
+      "FileCacheOptions": {
+        "TtlSeconds": 15,
+        "Region": "HouseholdCache",
+        "Header": "Cache-Control",
+        "EnableContentHashing": false
+      }
+    },
+
+    {
+      "DownstreamPathTemplate": "/api/TransactionDashboard/DasboardResult",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44304
+        },
+        {
+          "Host": "localhost",
+          "Port": 44305
+        }
+      ],
+      "UpstreamPathTemplate": "/whd/dashboard/result",
+      "UpstreamHttpMethod": [ "GET" ],
+      "LoadBalancerOptions": { "Type": "RoundRobin" },
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "10s",
+        "PeriodTimespan": 5,
+        "Limit": 3
+      },
+      "FileCacheOptions": {
+        "TtlSeconds": 15,
+        "Region": "HouseholdCache",
+        "Header": "Cache-Control",
+        "EnableContentHashing": false
+      }
+    },
+
+    {
+      "DownstreamPathTemplate": "/api/TransactionDashboard",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44304
+        },
+        {
+          "Host": "localhost",
+          "Port": 44305
+        }
+      ],
+      "UpstreamPathTemplate": "/whd/dashboard",
+      "UpstreamHttpMethod": [ "GET", "POST" ],
+      "LoadBalancerOptions": { "Type": "RoundRobin" },
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "10s",
+        "PeriodTimespan": 5,
+        "Limit": 3
+      },
+      "FileCacheOptions": {
+        "TtlSeconds": 15,
+        "Region": "HouseholdCache",
+        "Header": "Cache-Control",
+        "EnableContentHashing": false
+      }
+    },
+
+    {
+      "DownstreamPathTemplate": "/api/TransactionDashboard/updatedocument/{documentTransID}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44304
+        },
+        {
+          "Host": "localhost",
+          "Port": 44305
+        }
+      ],
+      "UpstreamPathTemplate": "/whd/dashboard/updatedoc/{id}",
+      "UpstreamHttpMethod": [ "GET", "PUT" ],
+      "LoadBalancerOptions": { "Type": "RoundRobin" },
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "10s",
+        "PeriodTimespan": 5,
+        "Limit": 3
+      },
+      "FileCacheOptions": {
+        "TtlSeconds": 15,
+        "Region": "HouseholdCache",
+        "Header": "Cache-Control",
+        "EnableContentHashing": false
+      }
+    },
+
+    {
+      "DownstreamPathTemplate": "/api/TransactionDashboard/deletedocument/{documentTransID}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44304
+        },
+        {
+          "Host": "localhost",
+          "Port": 44305
+        }
+      ],
+      "UpstreamPathTemplate": "/whd/dashboard/deletedoc/{documentTransId}",
+      "UpstreamHttpMethod": [ "GET", "DELETE" ],
+      "LoadBalancerOptions": { "Type": "RoundRobin" },
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "10s",
+        "PeriodTimespan": 5,
+        "Limit": 3
+      },
+      "FileCacheOptions": {
+        "TtlSeconds": 15,
+        "Region": "HouseholdCache",
+        "Header": "Cache-Control",
+        "EnableContentHashing": false
+      }
+    },
+
+    {
+      "DownstreamPathTemplate": "/api/TransactionDashboard/deletetransaction/{transactionid}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44304
+        },
+        {
+          "Host": "localhost",
+          "Port": 44305
+        }
+      ],
+      "UpstreamPathTemplate": "/whd/dashboard/deletetransaction/{id}",
+      "UpstreamHttpMethod": [ "GET", "DELETE" ],
+      "LoadBalancerOptions": { "Type": "RoundRobin" },
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "10s",
+        "PeriodTimespan": 5,
+        "Limit": 3
+      },
+      "FileCacheOptions": {
+        "TtlSeconds": 15,
+        "Region": "HouseholdCache",
+        "Header": "Cache-Control",
+        "EnableContentHashing": false
+      }
+    },
+
+
+    {
+      "DownstreamPathTemplate": "/api/user/GetToken",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44304
+        },
+        {
+          "Host": "localhost",
+          "Port": 44305
+        }
+      ],
+      "UpstreamPathTemplate": "/whd/user/token",
+      "UpstreamHttpMethod": [ "GET" ],
+      "LoadBalancerOptions": { "Type": "RoundRobin" },
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "10s",
+        "PeriodTimespan": 5,
+        "Limit": 3
+      },
+      "FileCacheOptions": {
+        "TtlSeconds": 15,
+        "Region": "HouseholdCache",
+        "Header": "Cache-Control",
+        "EnableContentHashing": false
+      }
+    },
+
+    {
+      "DownstreamPathTemplate": "/api/User/GetUserProp/{username}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44304
+        },
+        {
+          "Host": "localhost",
+          "Port": 44305
+        }
+      ],
+      "UpstreamPathTemplate": "/whd/user/prop/{username}",
+      "UpstreamHttpMethod": [ "GET" ],
+      "LoadBalancerOptions": { "Type": "RoundRobin" },
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "10s",
+        "PeriodTimespan": 5,
+        "Limit": 3
+      },
+      "FileCacheOptions": {
+        "TtlSeconds": 15,
+        "Region": "HouseholdCache",
+        "Header": "Cache-Control",
+        "EnableContentHashing": false
+      }
+    },
+
+    {
+      "DownstreamPathTemplate": "/api/WhdActivity",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44304
+        },
+        {
+          "Host": "localhost",
+          "Port": 44305
+        }
+      ],
+      "UpstreamPathTemplate": "/whd/whdactivity",
+      "UpstreamHttpMethod": [ "GET" ],
+      "LoadBalancerOptions": { "Type": "RoundRobin" },
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "10s",
+        "PeriodTimespan": 5,
+        "Limit": 3
+      },
+      "FileCacheOptions": {
+        "TtlSeconds": 15,
+        "Region": "HouseholdCache",
+        "Header": "Cache-Control",
+        "EnableContentHashing": false
+      }
+    },
+
+    {
+      "DownstreamPathTemplate": "/api/WhdCategory/GetCategoryAll",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44304
+        },
+        {
+          "Host": "localhost",
+          "Port": 44305
+        }
+      ],
+      "UpstreamPathTemplate": "/whd/whdcategory",
+      "UpstreamHttpMethod": [ "GET" ],
+      "LoadBalancerOptions": { "Type": "RoundRobin" },
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "10s",
+        "PeriodTimespan": 5,
+        "Limit": 3
+      },
+      "FileCacheOptions": {
+        "TtlSeconds": 15,
+        "Region": "HouseholdCache",
+        "Header": "Cache-Control",
+        "EnableContentHashing": false
+      }
+    },
+
+    {
+      "DownstreamPathTemplate": "/api/WhdCategory/GetCategorybyCategoryClue/{categorydesc}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44304
+        },
+        {
+          "Host": "localhost",
+          "Port": 44305
+        }
+      ],
+      "UpstreamPathTemplate": "/whd/whdcategory/clue/{categorydesc}",
+      "UpstreamHttpMethod": [ "GET" ],
+      "LoadBalancerOptions": { "Type": "RoundRobin" },
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "10s",
+        "PeriodTimespan": 5,
+        "Limit": 3
+      },
+      "FileCacheOptions": {
+        "TtlSeconds": 15,
+        "Region": "HouseholdCache",
+        "Header": "Cache-Control",
+        "EnableContentHashing": false
+      }
+    },
+
+    {
+      "DownstreamPathTemplate": "/api/WhdTools/GetTools",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44304
+        },
+        {
+          "Host": "localhost",
+          "Port": 44305
+        }
+      ],
+      "UpstreamPathTemplate": "/whd/tools",
+      "UpstreamHttpMethod": [ "GET" ],
+      "LoadBalancerOptions": { "Type": "RoundRobin" },
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "10s",
+        "PeriodTimespan": 5,
+        "Limit": 3
+      },
+      "FileCacheOptions": {
+        "TtlSeconds": 15,
+        "Region": "HouseholdCache",
+        "Header": "Cache-Control",
+        "EnableContentHashing": false
+      }
+    },
+    //{
+    //  "DownstreamPathTemplate": "/api/TransactionDashboard/Download/{Id}",
+    //  "DownstreamScheme": "https",
+    //  "DownstreamHostAndPorts": [
+    //    {
+    //      "Host": "localhost",
+    //      "Port": 44304
+    //    },
+    //    {
+    //      "Host": "localhost",
+    //      "Port": 44305
+    //    }
+    //  ],
+    //  "UpstreamPathTemplate": "/whd/dashboard/download/{Id}",
+    //  "UpstreamHttpMethod": [ "GET" ],
+    //  "LoadBalancerOptions": { "Type": "RoundRobin" },
+    //  "RateLimitOptions": {
+    //    "EnableRateLimiting": true,
+    //    "Period": "10s",
+    //    "PeriodTimespan": 5,
+    //    "Limit": 3
+    //  },
+    //  "FileCacheOptions": {
+    //    "TtlSeconds": 15,
+    //    "Region": "HouseholdCache",
+    //    "Header": "Cache-Control",
+    //    "EnableContentHashing": false
+    //  }
+    //},
+    //{
+    //  "DownstreamPathTemplate": "/api/TransactionDashboard/GetHistory/{Id}",
+    //  "DownstreamScheme": "https",
+    //  "DownstreamHostAndPorts": [
+    //    {
+    //      "Host": "localhost",
+    //      "Port": 44304
+    //    },
+    //    {
+    //      "Host": "localhost",
+    //      "Port": 44305
+    //    }
+    //  ],
+    //  "UpstreamPathTemplate": "/whd/dashboard/history/{Id}",
+    //  "UpstreamHttpMethod": [ "GET" ],
+    //  "LoadBalancerOptions": { "Type": "RoundRobin" },
+    //  "RateLimitOptions": {
+    //    "EnableRateLimiting": true,
+    //    "Period": "10s",
+    //    "PeriodTimespan": 5,
+    //    "Limit": 3
+    //  },
+    //  "FileCacheOptions": {
+    //    "TtlSeconds": 15,
+    //    "Region": "HouseholdCache",
+    //    "Header": "Cache-Control",
+    //    "EnableContentHashing": false
+    //  }
+    //},
+
+    {
+      "DownstreamPathTemplate": "/weatherforecast",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44304
+        },
+        {
+          "Host": "localhost",
+          "Port": 44305
+        }
+      ],
+      "UpstreamPathTemplate": "/whd/weatherforecast",
+      "UpstreamHttpMethod": [ "GET" ],
+      "Key": "WhdWeatherForecast",
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      },
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "10s",
+        "PeriodTimespan": 5,
+        "Limit": 3
+      },
+      "FileCacheOptions": {
+        "TtlSeconds": 15,
+        "Region": "HouseholdCache",
+        "Header": "Cache-Control",
+        "EnableContentHashing": false
+      }
+    },
+
+    // API untuk broadcast
+
+    {
+      "DownstreamPathTemplate": "/swagger/{everything}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44315
+        }
+      ],
+      "UpstreamPathTemplate": "/broadcast/swagger/{everything}",
+      "UpstreamHttpMethod": [ "GET" ],
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "10s",
+        "PeriodTimespan": 5,
+        "Limit": 3
+      },
+      "FileCacheOptions": {
+        "TtlSeconds": 15,
+        "Region": "HouseholdCache",
+        "Header": "Cache-Control",
+        "EnableContentHashing": false
+      }
+    },
+
+    {
+      "DownstreamPathTemplate": "/api/Broadcast/GetList",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44315
+        }
+      ],
+      "UpstreamPathTemplate": "/broadcast/list",
+      "UpstreamHttpMethod": [ "GET" ],
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "10s",
+        "PeriodTimespan": 5,
+        "Limit": 3
+      },
+      "FileCacheOptions": {
+        "TtlSeconds": 15,
+        "Region": "HouseholdCache",
+        "Header": "Cache-Control",
+        "EnableContentHashing": false
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/api/Broadcast/GetById/{Id}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44315
+        }
+      ],
+      "UpstreamPathTemplate": "/broadcast/{Id}",
+      "UpstreamHttpMethod": [ "GET" ],
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "10s",
+        "PeriodTimespan": 5,
+        "Limit": 3
+      },
+      "FileCacheOptions": {
+        "TtlSeconds": 15,
+        "Region": "HouseholdCache",
+        "Header": "Cache-Control",
+        "EnableContentHashing": false
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/api/Broadcast/upload",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44315
+        }
+      ],
+      "UpstreamPathTemplate": "/broadcast/upload",
+      "UpstreamHttpMethod": [ "GET", "POST" ],
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "10s",
+        "PeriodTimespan": 5,
+        "Limit": 3
+      },
+      "FileCacheOptions": {
+        "TtlSeconds": 15,
+        "Region": "HouseholdCache",
+        "Header": "Cache-Control",
+        "EnableContentHashing": false
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/api/Broadcast/DeleteExpiredBroadcasts",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44315
+        }
+      ],
+      "UpstreamPathTemplate": "/broadcast/delete-expired",
+      "UpstreamHttpMethod": [ "GET", "DELETE" ],
+      "Key": "BroadcastDeleteExpired",
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "10s",
+        "PeriodTimespan": 5,
+        "Limit": 3
+      },
+      "FileCacheOptions": {
+        "TtlSeconds": 15,
+        "Region": "HouseholdCache",
+        "Header": "Cache-Control",
+        "EnableContentHashing": false
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/api/Broadcast/DeleteFolderName",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44315
+        }
+      ],
+      "UpstreamPathTemplate": "/broadcast/delete-folder",
+      "UpstreamHttpMethod": [ "GET", "DELETE" ],
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "10s",
+        "PeriodTimespan": 5,
+        "Limit": 3
+      },
+      "FileCacheOptions": {
+        "TtlSeconds": 15,
+        "Region": "HouseholdCache",
+        "Header": "Cache-Control",
+        "EnableContentHashing": false
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/api/Calendar/GetList",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44315
+        }
+      ],
+      "UpstreamPathTemplate": "/broadcast/calendar/list",
+      "UpstreamHttpMethod": [ "GET" ],
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "10s",
+        "PeriodTimespan": 5,
+        "Limit": 3
+      },
+      "FileCacheOptions": {
+        "TtlSeconds": 15,
+        "Region": "HouseholdCache",
+        "Header": "Cache-Control",
+        "EnableContentHashing": false
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/api/Calendar/GetById/{Id}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44315
+        }
+      ],
+      "UpstreamPathTemplate": "/broadcast/calendar/{Id}",
+      "UpstreamHttpMethod": [ "GET" ],
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "10s",
+        "PeriodTimespan": 5,
+        "Limit": 3
+      },
+      "FileCacheOptions": {
+        "TtlSeconds": 15,
+        "Region": "HouseholdCache",
+        "Header": "Cache-Control",
+        "EnableContentHashing": false
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/api/CoorporateNews/GetList",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44315
+        }
+      ],
+      "UpstreamPathTemplate": "/broadcast/corporatenews/list",
+      "UpstreamHttpMethod": [ "GET" ],
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "10s",
+        "PeriodTimespan": 5,
+        "Limit": 3
+      },
+      "FileCacheOptions": {
+        "TtlSeconds": 15,
+        "Region": "HouseholdCache",
+        "Header": "Cache-Control",
+        "EnableContentHashing": false
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/api/CoorporateNews/GetById/{Id}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44315
+        }
+      ],
+      "UpstreamPathTemplate": "/broadcast/corporatenews/{Id}",
+      "UpstreamHttpMethod": [ "GET" ],
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "10s",
+        "PeriodTimespan": 5,
+        "Limit": 3
+      },
+      "FileCacheOptions": {
+        "TtlSeconds": 15,
+        "Region": "HouseholdCache",
+        "Header": "Cache-Control",
+        "EnableContentHashing": false
+      }
+    },
+
+    //{
+    //  "DownstreamPathTemplate": "/configuration",
+    //  "DownstreamScheme": "https",
+    //  "DownstreamHostAndPorts": [
+    //    {
+    //      "Host": "localhost",
+    //      "Port": 44315
+    //    }
+    //  ],
+    //  "UpstreamPathTemplate": "/broadcast/configuration",
+    //  "UpstreamHttpMethod": [ "POST" ],
+    //  "RateLimitOptions": {
+    //    "EnableRateLimiting": true,
+    //    "Period": "10s",
+    //    "PeriodTimespan": 5,
+    //    "Limit": 3
+    //  },
+    //  "FileCacheOptions": {
+    //    "TtlSeconds": 15,
+    //    "Region": "HouseholdCache",
+    //    "Header": "Cache-Control",
+    //    "EnableContentHashing": false
+    //  }
+    //},
+
+    {
+      "DownstreamPathTemplate": "/configuration",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44315
+        }
+      ],
+      "UpstreamPathTemplate": "/internal/broadcast/config",
+      "UpstreamHttpMethod": [ "GET", "POST" ],
+      "Key": "BroadcastConfig",
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "10s",
+        "PeriodTimespan": 5,
+        "Limit": 3
+      },
+      "FileCacheOptions": {
+        "TtlSeconds": 15,
+        "Region": "HouseholdCache",
+        "Header": "Cache-Control",
+        "EnableContentHashing": false
+      }
+    },
+
+    {
+      "DownstreamPathTemplate": "/api/NewsBroadcast/GetList",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44315
+        }
+      ],
+      "UpstreamPathTemplate": "/broadcast/news/list",
+      "UpstreamHttpMethod": [ "GET" ],
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "10s",
+        "PeriodTimespan": 5,
+        "Limit": 3
+      },
+      "FileCacheOptions": {
+        "TtlSeconds": 15,
+        "Region": "HouseholdCache",
+        "Header": "Cache-Control",
+        "EnableContentHashing": false
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/api/NewsBroadcast/GetById/{Id}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44315
+        }
+      ],
+      "UpstreamPathTemplate": "/broadcast/news/{Id}",
+      "UpstreamHttpMethod": [ "GET" ],
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "10s",
+        "PeriodTimespan": 5,
+        "Limit": 3
+      },
+      "FileCacheOptions": {
+        "TtlSeconds": 15,
+        "Region": "HouseholdCache",
+        "Header": "Cache-Control",
+        "EnableContentHashing": false
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/ocelot/outputcache/{region}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44315
+        }
+      ],
+      "UpstreamPathTemplate": "/broadcast/cache/{region}",
+      "UpstreamHttpMethod": [ "GET", "DELETE" ],
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "10s",
+        "PeriodTimespan": 5,
+        "Limit": 3
+      },
+      "FileCacheOptions": {
+        "TtlSeconds": 15,
+        "Region": "HouseholdCache",
+        "Header": "Cache-Control",
+        "EnableContentHashing": false
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/WeatherForecast",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44315
+        }
+      ],
+      "UpstreamPathTemplate": "/broadcast/weatherforecast",
+      "UpstreamHttpMethod": [ "GET" ],
+      "Key": "BroadcastWeatherForecast",
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "10s",
+        "PeriodTimespan": 5,
+        "Limit": 3
+      },
+      "FileCacheOptions": {
+        "TtlSeconds": 15,
+        "Region": "HouseholdCache",
+        "Header": "Cache-Control",
+        "EnableContentHashing": false
+      }
+    },
+
+    {
+      "DownstreamPathTemplate": "/api/CacheTest/data",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44315
+        }
+      ],
+      "UpstreamPathTemplate": "/cache/test",
+      "UpstreamHttpMethod": [ "GET" ],
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      },
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "10s",
+        "PeriodTimespan": 5,
+        "Limit": 3
+      },
+      "FileCacheOptions": {
+        "TtlSeconds": 15,
+        "Region": "HouseholdCache",
+        "Header": "Cache-Control",
+        "EnableContentHashing": false
+      }
+    }
+
+    //{
+    //  "UpstreamPathTemplate": "/configurations",
+    //  "UpstreamHttpMethod": [ "GET" ],
+    //  "DownstreamRouteKeys": [
+    //    "MfaConfig",
+    //    "BroadcastConfig"
+    //  ],
+    //  "Aggregator": "DownstreamResponse"
+    //}
+
+  ],
+
+  "Aggregates": [
+    {
+      "RouteKeys": [
+        "MfaConfig",
+        "BroadcastConfig"
+      ],
+      "UpstreamPathTemplate": "/configurations"
+    },
+    {
+      "RouteKeys": [
+        "MfaWeatherForecast",
+        "WhdWeatherForecast",
+        "BroadcastWeatherForecast"
+      ],
+      "UpstreamPathTemplate": "/aggregate/weatherforecast"
+    },
+    {
+      "RouteKeys": [
+        "BroadcastDeleteExpired",
+        "DeleteExpiredWhdBroadcasts"
+      ],
+      "UpstreamPathTemplate": "/broadcast/deleteexpired"
+    }
+
+  ],
+  "GlobalConfiguration": {
+    "BaseUrl": "https://localhost:7292",
+    "RateLimitOptions": {
+      "ClientIdHeader": "ClientId",
+      "HttpStatusCode": 429,
+      "QuotaExceededMessage": "API call limit exceeded. Please try again later.",
+      "DisableRateLimitHeaders": false
+
+    }
+  }
+
+}
+
+

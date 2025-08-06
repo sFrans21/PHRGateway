@@ -1,0 +1,114 @@
+﻿@model WebSystem.Models.UserInfo
+
+@{
+    ViewData["Title"] = "Home Page";
+    //Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+
+<style>
+    .main-menu-box {
+        box-sizing: border-box;
+    }
+
+    .flex-container {
+        display: flex;
+        flex-wrap: wrap;
+        font-size: 30px;
+    }
+
+    .flex-item {
+        background-color: white;
+        padding: 10px;
+        flex: 100%;
+        text-align: left;
+        margin-top: 100px;
+    }
+
+    .p1 {
+        font-size: 65px;
+        color: #ABC437;
+        margin-bottom: -15px;
+    }
+
+    .user-info {
+        display: flex;
+        align-items: center;
+    }
+    .user-info h3 {
+        font-weight: 500;
+        font-size: 20px;
+    }
+
+    .user-info p {
+        font-size: 12px;
+    }
+
+    .user-info img {
+        width: 60px;
+        border-radius: 50%;
+        margin-right: 15px;
+    }
+
+    a {
+        color: white;
+    }
+</style>
+<div class="pt-4">
+    <nav>
+        <div class="nav nav-tabs nav-pills nav-justified flex-sm-row" id="nav-tabs" role="tablist">
+            <a class="nav-item nav-link active" id="nav-background-tab" data-toggle="tab" href="#nav-background" role="tab" aria-controls="nav-background" aria-selected="true">Informasi Latar Belakang</a>
+            <a class="nav-item nav-link" id="nav-information-tab" data-toggle="tab" href="#nav-information" role="tab" aria-controls="nav-information" aria-selected="true">Informasi Proses</a>
+        </div>
+    </nav>
+
+    <div class="tab-content" id="nav-tabContent">
+        <div class="tab-pane fade show active" id="nav-background" role="tabpanel" aria-labelledby="nav-backround-tab">
+            <div class="row text-center">
+                <div class="col-lg-6">
+                    <img src="/assets/img/Latar_belakang.png" alt="Alternate Text" style="height: 375px; width: 570px;" />
+                </div>
+
+                <div class="col-lg-6 main-menu-box">
+                    <div class="flex-container">
+                        <div class="flex-item">
+                            <p class="p1">Mengenal</p>
+                            <p>Carbon Calculator</p>
+                            <div class="float-right text-white">
+                                <a class="btn btn-danger" asp-controller="Home" asp-action="BackgroundInfo">Selengkapnya <i class="fa fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="nav-information" role="tabpanel" aria-labelledby="nav-information-tab">
+            <div class="row text-center">
+                <div class="col-lg-6">
+                    <img src="/assets/img/informasi-proses.png" alt="Alternate Text" style="height: 443px; width: 570px;" />
+                </div>
+
+                <div class="col-lg-6 main-menu-box">
+                    <div class="flex-container">
+                        <div class="flex-item">
+                            <p class="p1">Cara Kerja</p>
+                            <p>Carbon Calculator</p>
+                            <div class="float-right text-white">
+                                <a class="btn btn-danger" asp-controller="Home" asp-action="Help">Selengkapnya <i class="fa fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center text-white pt-3">
+            <a class="btn btn-success" asp-controller="Periode" asp-action="Index">Hitung Emisi sekarang</a>
+            <!-- test -->
+            <!-- UserName : 
+            @ViewBag.Displayname -->
+            
+            <!--<strong>Halo @ViewBag.DisplayName</strong>
+            <strong>Halo @ViewBag.UserName</strong>-->
+        </div>
+    </div>
+</div>

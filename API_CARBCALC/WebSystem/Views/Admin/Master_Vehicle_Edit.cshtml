@@ -1,0 +1,84 @@
+﻿@model WebSystem.Models.TblVehicle
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<style>
+    .span-calc {
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+    .label-calc {
+        font-size: 20px;
+    }
+
+    .input-label {
+        background: rgba(0, 0, 0, 0);
+        border: none;
+        text-align: center;
+    }
+</style>
+
+<div class="tab-content" id="nav-tabContent">
+
+    <div class="tab-pane fade show active" id="nav-serapan" role="tabpanel" aria-labelledby="nav-serapan-tab"></div>
+
+
+    <form asp-action="Edit" method="post" enctype="multipart/form-data">
+        <div id="variabel">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <input asp-for="VehicleId" class="form-control" type="hidden" />
+                        <input asp-for="VehicleTypeId" class="form-control" type="hidden" />
+                        <label>Kendaraan</label>
+                        <input asp-for="VehicleName" class="form-control" />
+                        <span asp-validation-for="VehicleName" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Gambar Kendaraan</label>
+                        @*<label asp-for="TreeImage" class="control-label"></label>*@
+                        <div class="custom-file">
+                            <input asp-for="Img" class="form-control" type="hidden" />
+                            <input asp-for="VehicleImage" class="custom-file-input" id="customFile">
+                            <label class="custom-file-label" for="customFile">@ViewBag.img</label>
+                        </div>
+                        <span asp-validation-for="VehicleImage" class="text-danger"></span>
+                    </div>
+                </div>
+
+                @*<div class="col-md-6">
+                    <div class="form-group">
+                        
+                    </div>
+                </div>*@
+
+
+            </div>
+
+            <div class="form-group">
+                <div class="col text-center">
+                    <input class="btn btn-primary" type="submit" value="Update" asp-action="Update_Vehicle" />
+                    <a class="btn btn-light" asp-action="Master_Vehicle">Kembali</a>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script type="text/javascript">
+        // Add the following code if you want the name of the file appear on select
+        $(".custom-file-input").on("change", function () {
+            var fileName = $(this).val().split("\\").pop();
+            $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+        });
+    </script>
+}

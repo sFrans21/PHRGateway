@@ -1,0 +1,182 @@
+﻿@model IEnumerable<WebSystem.Models.TblTUser>
+
+@{
+    ViewData["Title"] = "User Administration";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/bootstrap-datepicker/css/bootstrap-datepicker.css" rel="stylesheet" />
+
+<div class="text-center">    
+    <h3>User Administration</h3>
+</div>
+
+<!-- <a s-text="User 1" s-actionName="Master_User_Edit" s-controllerName="Admin" s-rK1="testID" s-rV1="1" s-rK2="userID" s-rV2="1"></a>
+-->
+
+<div class="box" style="border-top-color:#337ab7">
+    <div class="box-body">
+        <table class="table table-striped table-bordered" id="asdasd">
+            <thead>
+                <tr>
+                    <th>
+                        Nama
+                    </th>
+                    <th>
+                        Company
+                    </th>
+                    <th>
+                        Regional
+                    </th>
+                    <th>
+                        Zona
+                    </th>
+                    <th>
+                        Admin
+                    </th>
+                    <th>
+                        Action
+                    </th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+<!--<div class="tab-content" id="nav-tabContent">-->    
+    @*serapan karbon*@
+    <!--<div class="tab-pane fade show active" id="nav-serapan" role="tabpanel" aria-labelledby="nav-serapan-tab">
+        <div class="pt-4">-->
+           @* <a class="btn btn-success mb-3" asp-controller="Admin" asp-action="Master_User_Create"><i class="fa fa-plus"></i> Tambah</a>*@
+            <!--<table class="table table-striped table-bordered" id="asdasd">
+                <thead>
+                    <tr>                        
+                        <th>                            
+                            Nama 
+                        </th>
+                        <th>
+                            Company
+                        </th>
+                        <th>
+                            Regional
+                        </th>
+                        <th>
+                            Zona
+                        </th>
+                        <th>
+                            Admin
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+</div>-->
+
+@section scripts{
+
+
+    <script type="text/javascript">
+        var UrlAdminTools = '@Url.Action("GetListUser", "Admin")';
+        var url = '@Url.Action("Details", "Admin")'
+
+
+        $(document).ready(function () {
+            //$('div[id="nav-rumah"]').on('shown.bs.tab', function (e) {
+            //    $.fn.dataTable.tables({ visible: true, api: true }).columns.adjust();
+            //});
+
+            $('#asdasd').DataTable({
+                order: [0, 'asc'],
+                fixedHeader: true,
+                scrollY: true,
+                ajax: {
+                    url: UrlAdminTools,
+                    type: 'GET',
+                    dataType: 'json',
+                    dataSrc: ''
+                },
+                //columnDefs: [
+                //    { 'targets': [0], 'visible': true, 'searchable': false },
+                //    { 'targets': [1], 'visible': true, 'searchable': false }
+                //],
+                columnDefs: [
+                    { 'targets': [0], 'width': '150px' },
+                    { 'targets': [1], 'width': '220px' },
+                    { 'targets': [2], 'width': '130px' }
+                ],
+                responsive: true,
+                columns: [                    
+                    { data: 'name' },
+                    { data: 'company' },
+                    { data: 'regional' },
+                    { data: 'zona' },
+                    { data: 'isAdmin',
+                              render: function (data, type, row, meta)
+                              {
+                                  if (row.isAdmin==1)
+                                  {
+                                      return "Super Admin";
+                                  }
+
+                                  if (row.isAdmin==2)
+                                  {
+                                      return "Admin Regional";
+                                  }
+
+                                    if (row.isAdmin == 3) 
+                                    {
+                                        return "Admin Zona";
+                                    }
+
+                                    if (row.isAdmin == 4) 
+                                    {
+                                        return "Admin Field";
+                                    }
+
+                                    if ((row.isAdmin == 5) || (row.isAdmin == 0) || (row.isAdmin == null))
+                                    {
+                                        return "Staff";
+                                    }
+
+
+                                    
+                              }
+                     },
+                    {
+                        data: 'id',
+                        render: function (data, type, row, meta) 
+                        {
+                            return '<a class="btn btn-light" style="margin-right:2px;" href="' + row.encLink + '"><i class="fa fa-pencil"></i></a>' +
+                                '<a class="btn btn-light" style="margin-right:2px;" href="' + row.encLink_Edit + '" ><i class="fa fa-eye"></i></a>' +
+                                '<a class="btn btn-light" style="margin-right:2px;" onclick="Delete(' + row.userID + ')" ><i class="fa fa-trash"></i></a>'
+
+                            //return '<a class="btn btn-light" style="margin-right:5px;" href="/Admin/Master_User_Edit/' + row.userID + '"><i class="fa fa-pencil"></i></a>' +
+                            //    '<a class="btn btn-light" style="margin-right:5px;" href="/Admin/Master_User_Details/' + row.userID + '" ><i class="fa fa-eye"></i></a>' +
+                            //    '<a class="btn btn-light" style="margin-right:5px;" onclick="Delete(' + row.userID + ')" ><i class="fa fa-trash"></i></a>' + row.encLink
+
+                        }
+                    }
+
+                    
+                ],
+            });
+        });
+
+        $(function () {
+        var successMessage = '@TempData["SuccessMessage"]'
+        if (successMessage != '')
+            alertify.success(successMessage);
+        });
+
+        function Delete(id) {
+            alertify.confirm('Carbon Calculator', 'Hapus data ?', function () {
+                window.location.href = '@Url.Action("Delete_User", "Admin")/' + id;
+            }, null)
+        }
+
+        function showInPopup(id) {
+            window.location.href = '@Url.Action("Details", "Admin")/' + id;
+        }
+    </script>
+}

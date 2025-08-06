@@ -1,0 +1,100 @@
+﻿@model TblTUser
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+        Home Page - Carbon Calculator Login
+    </title>
+    <script src="/Scripts/modernizr-2.8.3.js"></script>
+
+
+    <!-- <link href="/Content/bootstrap.css" rel="stylesheet"/>
+    <link href="/Content/Site.css" rel="stylesheet"/>
+     -->
+    <link href="favicon.ico" rel="shortcut icon" type="image/x-icon" />
+</head>
+<body>    
+
+        <form asp-action="Login" method="post">
+
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+            </div>
+        </div>
+        <div class="container body-content">
+
+            <meta charset="utf-8" />
+            <meta name="viewport" content="width=device-width" />
+            <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.min.css" />
+            <link rel="stylesheet" href="/css/site.css" />
+            <link href="/lib/font-awesome/css/all.css" rel="stylesheet" />
+            <link href="/css/login-style.css" rel="stylesheet" />
+
+            <title>Login</title>
+
+            <!-- <div class="text-right">Masuk</div> -->
+
+            <div class="col-md-4 login-box">
+                <div class="text-center logo-box">
+                    <img src="/assets/img/CarbonCalc-Logo.jpg" />
+                </div>
+                <h5 class="text-dark">Silahkan masuk terlebih dahulu</h5>
+
+                <div class="form-group">
+                    <div class="input-group">
+                        Silakan klik tombol login (Login Windows/I-Man) untuk masuk ke aplikasi. <br />
+                        <!-- <input type="submit" name="ctl00$MainContent$Login" value="Login" id="MainContent_Login" class="btn btn-primary text-white" /> -->
+
+                    </div>
+
+                    <div class="input-group">
+                        <!-- <input type="submit" name="ctl00$MainContent$Logout" value="Logout" id="MainContent_Logout" class="btn btn-primary text-white" /><br />
+                        <br /> -->
+                        <!-- <input name="TxtUsername" type="text" id="TxtUsername" />
+                        <input name="TxtPassword" type="password" id="TxtPassword" style="width:500px;" />-->
+
+
+                        <!-- <asp:TextBox runat="server" ID="txtUserName"></asp:TextBox>
+                        <asp:TextBox runat="server" ID="txtEmail" Width="500px"></asp:TextBox> -->
+
+                        <span id="MainContent_lbl1" style="display:inline-block;width:500px;"></span>
+                    </div>
+                    <input class="btn btn-primary" type="submit" value="Login" asp-action="GetIMANLogin" />
+                    <!-- <a class="btn btn-success mb-3" asp-controller="User" asp-action="Create"> -->
+                </div>
+
+                @Html.DisplayNameFor(model => model.UserName) <br />
+                @Html.DisplayNameFor(model => model.Email)
+
+
+            </div>
+
+            <!-- <footer class="border-top footer text-muted footer-colour">
+                <div class="container">
+                    &copy; 2022 - FrontEnd - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                </div>
+            </footer> -->
+
+
+            <hr />
+            <footer>
+                <p>&copy; 2023 - Carbon Calculator v1.00</p>
+            </footer>
+        </div>
+
+
+        
+    </form>
+
+    
+</body>
+</html>

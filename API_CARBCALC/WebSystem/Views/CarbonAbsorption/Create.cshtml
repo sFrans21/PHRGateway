@@ -1,0 +1,237 @@
+﻿@model CarbonAbsorption
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<style>
+    .span-calc {
+        font-size: 20px;
+        font-weight: bold;
+    }
+    .label-calc {
+        font-size: 20px;
+    }
+</style>
+
+<partial name="_HomeButton" />
+
+<div class="d-flex justify-content-center pt-2">
+    <div class="card text-white bg-danger" style="width: 12rem;">
+        <div class="card-body text-center" style="padding: 0.25rem;">
+            @*<p class="card-text"><i class="fa fa-calendar"></i> @ViewBag.periodedetail</p>*@
+            <a class="btn text-white" asp-controller="Periode" asp-action="Index" title="Ke Halaman Periode"><i class="fa fa-calendar"></i> @ViewBag.periodedetail</a>
+        </div>
+    </div>
+</div>
+
+<div class="text-center" style="padding-top:15px;">
+    @*<h2>Hai, @ViewBag.Displayname</h2>*@
+    <h3>Hitung emisi serapan karbon kamu</h3>
+</div>
+
+<nav>
+    <div class="nav nav-tabs nav-pills nav-justified flex-sm-row" id="nav-tab" role="tablist">
+        @*<a class="nav-item nav-link active" id="nav-rumah-tab" data-toggle="tab" href="#nav-rumah" role="tab" aria-controls="nav-rumah" aria-selected="true" idSpan="1" spanName="karbon di tempat tinggal"><i class="fa fa-house"></i> Rumah</a>
+        <a class="nav-item nav-link disabled" id="nav-kendaraan-tab" href="#nav-kendaraan" role="tab" aria-controls="nav-kendaraan" aria-selected="false" idSpan="1" spanName="karbon kendaraan"><i class="fa fa-car"></i> Kendaraan</a>
+        <a class="nav-item nav-link disabled" id="nav-serapan-tab" href="#nav-serapan" role="tab" aria-controls="nav-serapan" aria-selected="false" idSpan="1" spanName="serapan karbon"><i class="fa fa-tree"></i> Serapan Karbon</a>*@
+        <a class="nav-item nav-link disabled" asp-controller="Household" asp-action="Index"><img src="/assets/img/home_nav.png" style="width:25px;" /> Tempat Tinggal</a>
+        <a class="nav-item nav-link disabled" asp-controller="Vehicle" asp-action="Index"><img src="/assets/img/vehicle_nav.png" style="width:25px;" /> Kendaraan</a>
+        <a class="nav-item nav-link active" asp-controller="CarbonAbsorption" asp-action="Index"><img src="/assets/img/Tree_nav.png" style="width:25px;" /> Serapan Karbon</a>
+    </div>
+</nav>
+
+<div class="tab-content" id="nav-tabContent">
+
+    @*tempat tinggal*@
+    <div class="tab-pane fade" id="nav-rumah" role="tabpanel" aria-labelledby="nav-rumah-tab">
+        
+    </div>
+
+    @*kendaraan*@
+    <div class="tab-pane fade" id="nav-kendaraan" role="tabpanel" aria-labelledby="nav-kendaraan-tab"></div>
+
+    @*serapan karbon*@
+    <div class="tab-pane fade show active" id="nav-serapan" role="tabpanel" aria-labelledby="nav-serapan-tab"></div>
+    <div class="row" style="margin-top: 50px">
+        <div class="col-md-12">
+            <form asp-action="Create" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div id="variabel">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Jenis Tanaman <a data-toggle="modal" data-target="#JenisTanamanHelp" href="#"><i class="fa fa-question-circle"></i></a></label>                                
+                                
+                                <select asp-for="TreeId" class="form-control" asp-items="@ViewBag.ListTree"></select>
+                                <input asp-for="TreeId" class="form-control" hidden />                                
+                            </div>
+                        </div>
+                        <div class="col-md-6" hidden>
+                            <div class="form-group">
+                                <label>Umur </label>
+                                <input asp-for="Age" class="form-control" placeholder="Input here" value="3" />
+                                <span asp-validation-for="Age" class="text-danger"></span>
+                               
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Jumlah (batang) <a data-toggle="modal" data-target="#JumlahTanamanHelp" href="#"><i class="fa fa-question-circle"></i></a></label>
+                                <input asp-for="Amount" class="form-control" placeholder="Input here" min="0" />
+                                <span asp-validation-for="Amount" class="text-danger" ></span>
+                                <!-- <asp:Panel ID="infoJumlah" runat="server">
+                                    Masukkan jumlah pohon/tanaman yang ditanam (dalam satuan batang).<br />
+                                    Umur pohon/tanaman minimal berusia 3 tahun.  
+                                </asp:Panel> -->
+                            </div>
+                         </div>
+                    </div> 
+                        @* <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Periode</label>
+                                    <input asp-for="PeriodeId" class="form-control" placeholder="Input here" />
+                                    <span asp-validation-for="PeriodeId" class="text-danger"></span>
+                                </div>
+                         </div>*@
+                   
+
+                    <div class="form-group">
+                        <div class="col text-center">
+                            <input class="btn btn-primary" id="submit" type="submit" value="Kalkulasi" />
+                            <a class="btn btn-light" asp-action="Index">Kembali</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="kalkulasi">
+                    <div class="row text-center">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="label-calc">Jenis Pohon</label>
+                                <div>
+                                    <label class="span-calc">@ViewBag.treeName</label>
+                                </div>
+                                <span asp-validation-for="TreeId" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6" hidden>
+                            <div class="form-group">
+                                <label class="label-calc">Umur Pohon</label>
+                                <div>
+                                    <label class="span-calc">@Html.DisplayFor(model => model.Age)</label>
+                                </div>
+                                <span asp-validation-for="Age" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row text-center">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="label-calc">Jumlah pohon</label>
+                                <div>
+                                    <label class="span-calc">@Html.DisplayFor(model => model.Amount)</label>
+                                </div>
+                                <span asp-validation-for="Amount" class="text-danger"></span>
+                            </div>
+                        </div>
+                        @*<div class="col-md-6"> 
+                            <div class="form-group">
+                                <label class="label-calc">Periode</label>
+                                <div>
+                                    <label class="span-calc">@Html.DisplayFor(model => model.PeriodeId)</label>
+                                </div>
+                                <span asp-validation-for="PeriodeId" class="text-danger"></span>
+                            </div>
+                        </div>*@
+                    </div>
+
+                    <div class="row">
+
+                        @*bulan*@
+                        <div class="col-md-6 text-center">
+                            <div class="d-flex justify-content-center pt-4">
+                                <div class="card text-white bg-danger" style="width: 30rem; border-radius:0;">
+                                    <div class="card-body text-center" style="padding: 0.50rem;">
+                                        <p class="card-text" style="font-size: 1.4rem;">AKUMULASI BULAN INI</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="label-calc">Serapan Karbon</label>
+                                <div>
+                                    <span class="span-calc">@ViewBag.treeEmisionMonthAcc</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        @*tahun*@
+                        <div class="col-md-6 text-center">
+                            <div class="d-flex justify-content-center pt-4">
+                                <div class="card text-white bg-primary" style="width: 30rem; border-radius:0;">
+                                    <div class="card-body text-center" style="padding: 0.50rem;">
+                                        <p class="card-text" style="font-size: 1.4rem;">AKUMULASI SETAHUN</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="label-calc">Serapan Karbon</label>
+                                <div>
+                                    <span class="span-calc">@ViewBag.treeEmisionYear</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col text-center">
+                            <input class="btn btn-primary" type="submit" value="Simpan" asp-action="Save" />
+                            <a class="btn btn-light" asp-action="Index">Kembali</a>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<partial name="_CarbonAbsorptionHelpModal" />
+
+@section Scripts {
+    
+    <script>
+        function HideOnLoad() {
+            $("#variabel").show();
+            $("#kalkulasi").hide();
+        }
+
+        $(document).ready(function () {
+            var treeEmision = '@ViewBag.treeEmision'            
+
+            if (treeEmision == '') {
+                HideOnLoad();
+            }
+            else {
+                $("#variabel").hide(500);
+                $("#kalkulasi").show(500);
+            }
+        });
+
+        $(document).ready(function () {
+            $("#submit").click(function () {
+                $("#variabel").hide(500);
+                $("#kalkulasi").show(500);
+            });
+        });
+
+        $(document).ready(function () {
+            $("#kembali").click(function () {
+                $("#variabel").show(500);
+                $("#kalkulasi").hide(500);
+            });
+        });
+    </script>
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

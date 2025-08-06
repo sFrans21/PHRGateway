@@ -1,0 +1,159 @@
+﻿@model WebSystem.Models.Household
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<style>
+    .span-calc {
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+    .label-calc {
+        font-size: 20px;
+    }
+</style>
+
+<form asp-action="Details">
+    <div class="row text-center">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="label-calc">Jumlah orang dalam rumah</label>
+                <div>
+                    <label class="span-calc">@Html.DisplayFor(model => model.AmountPeople)</label>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="label-calc">Konsumsi gas LPG bulan ini (KG)</label>
+                <div>
+                    <label class="span-calc">@Html.DisplayFor(model => model.LpgConsumption)</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row text-center">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="label-calc">Konsumsi listrik bulan ini (kWh)</label>
+                <div>
+                    <label class="span-calc">@Html.DisplayFor(model => model.Standmeter)</label>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="label-calc">Konsumsi Gas Kota Bulan ini (M<sup>3</sup>)</label>
+                <div>
+                    <label class="span-calc">@Html.DisplayFor(model => model.CityGasConsumption)</label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+
+        @*bulan*@
+        <div class="col-md-6 text-center">
+            <div class="d-flex justify-content-center pt-4">
+                <div class="card text-white bg-danger" style="width: 30rem; border-radius:0;">
+                    <div class="card-body text-center" style="padding: 0.50rem;">
+                        <p class="card-text" style="font-size: 1.4rem;">AKUMULASI BULAN INI</p>
+                    </div>
+                </div>
+            </div>
+            @*<input type="hidden" asp-for="HouseholdId" />*@
+            <div class="form-group">
+                <label class="label-calc">Konsumsi Listrik (kWh)</label>
+                <div>
+                    <span class="span-calc">@Html.DisplayFor(model => model.MonthElectrikCons)</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="label-calc">Konsumsi LPG (Kg)</label>
+                <div>
+                    <span class="span-calc">@Html.DisplayFor(model => model.MonthLPGCons)</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="label-calc">Konsumsi Gas (M<sup>3</sup>)</label>
+                <div>
+                    <span class="span-calc">@Html.DisplayFor(model => model.MonthCityGasCons)</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="label-calc">Emisi CO<sup>2</sup> dari listrik (KG CO<sup>2</sup>-e)</label>
+                <div>
+                    <span class="span-calc">@Html.DisplayFor(model => model.MonthElectrikEmision)</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="label-calc">Emisi CO<sup>2</sup> dari gas (KG CO<sup>2</sup>-e)</label>
+                <div>
+                    <span class="span-calc">@Html.DisplayFor(model => model.MonthGasEmision)</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="label-calc">Emisi CO<sup>2</sup> per orang (KG CO<sup>2</sup>-e)</label>
+                <div>
+                    <span class="span-calc">@Html.DisplayFor(model => model.MonthPeopleEmision)</span>
+                </div>
+            </div>
+        </div>
+
+        @*tahun*@
+        <div class="col-md-6 text-center">
+            <div class="d-flex justify-content-center pt-4">
+                <div class="card text-white bg-primary" style="width: 30rem; border-radius:0;">
+                    <div class="card-body text-center" style="padding: 0.50rem;">
+                        <p class="card-text" style="font-size: 1.4rem;">AKUMULASI SETAHUN</p>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="label-calc">Konsumsi Listrik (kWh)</label>
+                <div>
+                    <span class="span-calc">@Html.DisplayFor(model => model.YearElectrikCons)</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="label-calc">Konsumsi LPG (Kg)</label>
+                <div>
+                    <span class="span-calc">@Html.DisplayFor(model => model.YearLPGCons)</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="label-calc">Konsumsi Gas (M<sup>3</sup>)</label>
+                <div>
+                    <span class="span-calc">@Html.DisplayFor(model => model.YearCityGasCons)</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="label-calc">Emisi CO<sup>2</sup> dari listrik (KG CO<sup>2</sup>-e)</label>
+                <div>
+                    <span class="span-calc">@Html.DisplayFor(model => model.YearElectric)</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="label-calc">Emisi CO<sup>2</sup> dari gas (KG CO<sup>2</sup>-e)</label>
+                <div>
+                    <span class="span-calc">@Html.DisplayFor(model => model.YearGas)</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="label-calc">Emisi CO<sup>2</sup> per orang (KG CO<sup>2</sup>-e)</label>
+                <div>
+                    <span class="span-calc">@Html.DisplayFor(model => model.YearPerson)</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col text-center">
+            <a class="btn btn-light" asp-action="Index">Kembali</a>
+        </div>
+    </div>
+
+</form>

@@ -1,0 +1,198 @@
+﻿@model IEnumerable<WebSystem.Models.Household>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<link href="~/bootstrap-datepicker/css/bootstrap-datepicker.css" rel="stylesheet" />
+<style>
+    table.dataTable thead>tr>th {
+        text-align: center;
+        vertical-align:middle;
+        background-color:white;
+    }
+
+    table.dataTable tbody tr > .dtfc-fixed-left, table.dataTable tbody tr > .dtfc-fixed-right {
+        z-index: 0;
+        background-color: white;
+    }
+
+    table.dataTable thead tr > .dtfc-fixed-left, table.dataTable thead tr > .dtfc-fixed-right, table.dataTable tfoot tr > .dtfc-fixed-left, table.dataTable tfoot tr.odd > .dtfc-fixed-right{
+       background-color:white;
+  
+    }
+
+ table.dataTable tbody tr.odd > .dtfc-fixed-right {
+        z-index: 0;
+        background-color: #eaeaea;
+    }
+    .btn-light {
+    color: #212529;
+    background-color: transparent !important;
+    border-color: transparent !important;
+}
+
+    table.dataTable tbody th, table.dataTable tbody td {
+        padding: 1px !important;
+        text-align:center;
+    }
+
+    dataTables_scroll {
+        font-size:9pt !important;
+    }
+    .table-striped tbody tr:nth-of-type(odd) {
+        background-color: #eaeaea;
+}
+
+    .table-striped tbody tr:nth-of-type(even) {
+        background-color:#ffff;
+    }
+</style>
+
+<partial name="_HomeButton" />
+
+<div class="d-flex justify-content-center pt-2">
+    <div class="card text-white bg-danger" style="width: 12rem;">
+        <div class="card-body text-center" style="padding: 0.25rem;">
+            @*<p class="card-text"><i class="fa fa-calendar"></i> @ViewBag.periodedetail</p>*@
+            <a class="btn text-white" asp-controller="Periode" asp-action="Index" title="Ke Halaman Periode"><i class="fa fa-calendar"></i> @ViewBag.periodedetail</a>
+        </div>
+    </div>
+</div>
+
+<div class="text-center" style="padding-top:15px;">
+    @*<h2>Hai, @ViewBag.Displayname</h2>*@
+    <h3>Hitung emisi karbon di tempat tinggal kamu</h3>
+</div>
+
+<nav>
+    <div class="nav nav-tabs nav-pills nav-justified flex-sm-row" id="nav-tab" role="tablist">
+        @*<a class="nav-item nav-link active" id="nav-rumah-tab" data-toggle="tab" href="#nav-rumah" role="tab" aria-controls="nav-rumah" aria-selected="true" idSpan="1" spanName="karbon di tempat tinggal"><i class="fa fa-house"></i> Rumah</a>*@
+        @*<a class="nav-item nav-link" id="nav-kendaraan-tab" data-toggle="tab" href="#nav-kendaraan" role="tab" aria-controls="nav-kendaraan" aria-selected="false" idSpan="1" spanName="karbon kendaraan"><i class="fa fa-car"></i> Kendaraan</a>*@
+        @*<a class="nav-item nav-link" id="nav-serapan-tab" data-toggle="tab" href="#nav-serapan" role="tab" aria-controls="nav-serapan" aria-selected="false" idSpan="1" spanName="serapan karbon"><i class="fa fa-tree"></i> Serapan Karbon</a>*@
+        <a class="nav-item nav-link active" asp-controller="Household" asp-action="Index"><img src="/assets/img/home_nav.png" style="width:25px;" /> Tempat Tinggal</a>
+        <a class="nav-item nav-link" asp-controller="Vehicle" asp-action="Index"><img src="/assets/img/vehicle_nav.png" style="width:25px;" /> Kendaraan</a>
+        <a class="nav-item nav-link" asp-controller="CarbonAbsorption" asp-action="Index"><img src="/assets/img/Tree_nav.png" style="width:25px;" /> Serapan Karbon</a>
+    </div>
+</nav>
+<div class="tab-content" id="nav-tabContent">
+    @*tempat tinggal*@
+    <div class="tab-pane fade show active" id="nav-rumah" role="tabpanel" aria-labelledby="nav-rumah-tab">
+        <div class="pt-4">
+            <a class="btn btn-success mb-3" asp-controller="Household" asp-action="Create"><i class="fa fa-plus"></i> Tambah</a>
+            <table class="table table-striped table-bordered" id="household">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.HouseholdId)
+                        </th>
+                        <th>
+                            @*@Html.DisplayNameFor(model => model.AmountPeople)*@
+                            Jumlah orang
+                        </th>
+                        <th>
+                            @*@Html.DisplayNameFor(model => model.Standmeter)*@
+                            Konsumsi Listrik (kWh)
+                        </th>
+                        <th>
+                            @*@Html.DisplayNameFor(model => model.LpgConsumption)*@
+                            Konsumsi gas LPG (KG)
+                        </th>
+                        <th>
+                            @*@Html.DisplayNameFor(model => model.CityGasConsumption)*@
+                            Konsumsi Gas Kota (M<sup>3</sup>)
+                        </th>
+                        <!--<th>-->
+                        @*@Html.DisplayNameFor(model => model.CityGasConsumption)*@
+                        <!--Periode
+                        </th>-->
+                        <th>
+                            Tanggal
+                        </th>
+                    <th>Action</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script type="text/javascript">
+        var UrlHousehold = '@Url.Action("GetList", "Household")';
+        var url = '@Url.Action("Details", "Household")'
+
+
+        $(document).ready(function () {
+            //$('div[id="nav-rumah"]').on('shown.bs.tab', function (e) {
+            //    $.fn.dataTable.tables({ visible: true, api: true }).columns.adjust();
+            //});
+
+            $('table.table').dataTable({
+                order: [0, 'desc'],
+                ajax: {
+                    url: UrlHousehold,
+                    type: 'GET',
+                    dataType: 'json',
+                    dataSrc: ''
+                },
+                columnDefs: [
+                    { 'targets': [0], 'visible': false, 'searchable': false },
+                    { 'width': '150px', 'targets': [6], 'orderable': false }
+                ],
+                responsive: true,
+                columns: [
+                    { data: 'householdId' },//0
+                    { data: 'amountPeople' },//1
+                    { 
+                        data: 'standmeter',
+                        render: $.fn.dataTable.render.number(',', '.', 2) 
+                    },//2
+                    { 
+                        data: 'lpgConsumption',
+                        render: $.fn.dataTable.render.number(',', '.', 2) 
+                    },//3
+                    {
+                        data: 'cityGasConsumption',
+                        render: $.fn.dataTable.render.number(',', '.', 2)
+                    },//4
+                    {
+                        //data: 'createdDateString'
+                        data: 'createdDate',
+                            "render": function (data, type, row) {
+                        return moment(data).format('DD MMMM YYYY');
+                             }
+                    },//1
+                    //{ data: 'periodeId' },//5
+                    {
+                        data: 'id',
+                        render: function (data, type, row, meta) {
+                            return '<a class="btn btn-light" style="margin-right:5px;" href="/household/Edit/' + row.householdId + '"><i class="fa fa-pencil"></i></a>' +
+                                '<a class="btn btn-light" style="margin-right:5px;" href="/household/Details/' + row.householdId + '" ><i class="fa fa-eye"></i></a>' +
+                                '<a class="btn btn-light" style="margin-right:5px;" onclick="Delete(' + row.householdId + ')" ><i class="fa fa-trash"></i></a>'
+
+                        } //6
+                    },
+                ],
+            });
+        });
+
+        $(function () {
+        var successMessage = '@TempData["SuccessMessage"]'
+        if (successMessage != '')
+            alertify.success(successMessage);
+        });
+
+        function Delete(id) {
+            alertify.confirm('Carbon Calculator', 'Hapus data ?', function () {
+                window.location.href = '@Url.Action("Delete", "Household")/' + id;
+            }, null)
+        }
+
+        function showInPopup(id) {
+            window.location.href = '@Url.Action("Details", "Household")/' + id;
+        }
+    </script>
+}

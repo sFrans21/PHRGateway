@@ -1,0 +1,46 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewBag.Title = "Index";
+}
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery-1.10.2.intellisense.js"></script>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        $.getJSON("/Home/BookingStatus", function (data) {
+            var tr;
+            $.each(data, function (d, i) {
+                tr = $('<tr/>');
+                tr.append("<td>" + i.RoomId + "</td>");
+                tr.append("<td>" + i.RooType + "</td>");
+                tr.append("<td>" + i.BookingStatus + "</td>");
+                $('#tblBookingStatus').append(tr);
+            });
+        });
+    });
+</script>
+<div class="form-horizontal">
+
+    <hr />
+    <div class="form-group">
+        <table id="tblBookingStatus" class="table table-responsive" style="width:400px">
+            <tr>
+                <th>
+                    Room Id
+                </th>
+                <th>
+                    Room Type
+                </th>
+                <th>
+                    Booking Status
+                </th>
+            </tr>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+</div>

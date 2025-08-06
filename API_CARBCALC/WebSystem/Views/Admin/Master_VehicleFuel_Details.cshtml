@@ -1,0 +1,55 @@
+﻿@model WebSystem.Models.TblFuel
+
+@{
+    ViewData["Title"] = "Detail Master Bahan Bakar Kendaraan";
+}
+
+<style>
+    .span-calc {
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+    .label-calc {
+        font-size: 20px;
+    }
+
+    .input-label {
+        background: rgba(0, 0, 0, 0);
+        border: none;
+        text-align: center;
+    }
+</style>
+
+
+<form asp-action="Konfirmasi" method="post">
+    <div id="variabel">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Bahan Bakar</label>                 
+                    <input asp-for="FuelName" class="form-control" disabled/>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>CO2_KG</label>
+                    <input asp-for="Co2_KG" class="form-control" disabled />
+                </div>
+            </div>
+
+
+        </div>
+        
+
+        <div class="form-group">
+            <div class="col text-center">                
+                <a class="btn btn-primary" asp-action="Master_VehicleFuel">Kembali</a>
+            </div>
+        </div>
+    </div>                    
+                        
+                        
+ </form>
+

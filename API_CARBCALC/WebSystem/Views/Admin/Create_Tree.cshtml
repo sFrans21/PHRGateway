@@ -1,0 +1,93 @@
+﻿@model Tree
+
+@{
+    ViewData["Title"] = "Tambah Master Pohon";
+}
+
+<style>
+    .span-calc {
+        font-size: 20px;
+        font-weight: bold;
+    }
+    .label-calc {
+        font-size: 20px;
+    }
+</style>
+
+<div class="tab-content" id="nav-tabContent">
+
+    <div class="tab-pane fade show active" id="nav-serapan" role="tabpanel" aria-labelledby="nav-serapan-tab"></div>
+    <div class="row" style="margin-top: 50px">
+        <div class="col-md-12">
+            <form asp-action="Create" method="post" enctype="multipart/form-data">
+                <div id="variabel">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Jenis Tanaman <a data-toggle="modal" data-target="#JenisTanamanHelp" href="#"><i class="fa fa-question-circle"></i></a></label>
+                                <input asp-for="TreeId" class="form-control" type="hidden" />
+                                <input asp-for="TreeName" class="form-control" placeholder="Input here" />
+                                <span asp-validation-for="TreeName" class="text-danger"></span>                              
+                             
+                            </div>
+                        </div>                        
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Serapan Karbon<a data-toggle="modal" data-target="#JumlahTanamanHelp" href="#"><i class="fa fa-question-circle"></i></a></label>                                
+                                <input asp-for="CarbonAbs" class="form-control"/>
+                                <span asp-validation-for="CarbonAbs" class="text-danger"></span>
+                                                               
+                            </div>
+                         </div>
+
+                         <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Tree Image</label>
+                                @*<label asp-for="TreeImage" class="control-label"></label>*@
+                                <div class="custom-file">
+                                    <input asp-for="TreeImage" class="custom-file-input" id="customFile">
+                                    <label class="custom-file-label" for="customFile">Choose file</label>
+                                </div>
+                                <span asp-validation-for="TreeImage" class="text-danger"></span>
+                            </div>
+                        </div>
+                        @*<div class="col-md-6">
+                            <div class="form-group">
+                                <label>Tree Image</label>
+                                <input asp-for="TreeImage" class="form-control" type="file" />
+                                <span asp-validation-for="TreeImage" class="text-danger"></span>
+
+                            </div>
+                        </div>*@
+
+                       @*<div class="col-md-6">  
+                            <div class="form-group">  
+                            <label> Tree Image</label>
+                                    <input asp-for="TreeImage" class="form-control" id="customFile">
+                            <span asp-validation-for="TreeImage" class="text-danger"></span>  
+                        </div>  
+                    </div> *@ 
+                </div>  
+                    <div class="form-group">
+                        <div class="col text-center">
+                            <input class="btn btn-primary" id="submit" type="submit" value="Simpan" asp-action="Save_Tree" />
+                            <a class="btn btn-light" asp-action="Master_Tree">Kembali</a>
+                        </div>
+                    </div>
+                </div>
+                
+            </form>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script type="text/javascript">
+        // Add the following code if you want the name of the file appear on select
+        $(".custom-file-input").on("change", function () {
+            var fileName = $(this).val().split("\\").pop();
+            $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+        });
+    </script>
+}

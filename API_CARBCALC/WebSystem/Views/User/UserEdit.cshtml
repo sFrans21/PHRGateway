@@ -1,0 +1,207 @@
+﻿@model WebSystem.Models.TblTUser
+
+@{
+    ViewData["Title"] = "Informasi Akun";
+    Layout = "~/Views/Shared/_LayoutInformationAccount.cshtml";
+}
+
+<style>
+    .span-calc {
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+    .label-calc {
+        font-size: 20px;
+    }
+
+    .input-label {
+        background: rgba(0, 0, 0, 0);
+        border: none;
+        text-align: center;
+    }
+</style>
+
+@*<div class="d-flex justify-content-center pt-4">
+    <div class="card text-white bg-danger" style="width: 12rem;">
+        <div class="card-body text-center" style="padding: 0.25rem;">
+            <a class="btn text-white" asp-controller="Periode" asp-action="Index"><i class="fa fa-calendar"></i> @ViewBag.periodedetail</a>
+        </div>
+    </div>
+</div>*@
+
+<div style="padding-top:10rem;">
+    <div class="text-center">
+        <h2>Hai, @ViewBag.Displayname</h2>
+        <h3>Mohon terlebih dahulu verifikasi data profile anda</h3>
+    </div>
+
+</div>
+
+    
+    @*<div class="tab-pane fade show active" id="nav-serapan" role="tabpanel" aria-labelledby="nav-serapan-tab"></div>
+                      <a class="btn btn-light" asp-action="Index">Kembali</a>
+                            </div>
+                        </div>
+                    </div>*@
+
+<form asp-action="Konfirmasi" method="post">
+    <div id="variabel">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Company</label>
+                    <!-- <input asp-for="TreeId" class="form-control" placeholder="Input here" /> -->
+                   @* <select asp-for="Company" class="form-control">
+                        <option value="1">PT Pertamina Hulu Rokan</option>
+                        <option value="2">Pertamina EP</option>
+                        <option value="3">PT. PERTAMINA HULU ENERGI (PHE)</option>
+                        <option value="4">PHI</option>
+                        <option value="5">PPC</option>                        
+                    </select>
+                    <span asp-validation-for="Company" class="text-danger"></span>*@
+                    <select asp-for="Company" class="form-control" asp-items="@ViewBag.Company"></select>
+                    <input asp-for="Company" class="form-control" hidden />
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Regional</label>
+                   <select asp-for="Regional" class="form-control" asp-items="@ViewBag.Regional"></select>
+                    <input asp-for="Regional" class="form-control" hidden />
+                     @*<select asp-for="Regional" class="form-control">
+                         <option value="0">-</option>
+                        <option value="1">Regional 1</option>
+                        <option value="2">Regional 2</option>
+                        <option value="3">Regional 3</option>
+                        <option value="4">Regional 4</option>
+                        <option value="5">Regional 5</option>                        
+                    </select>
+                    <span asp-validation-for="Regional" class="text-danger"></span>   *@                
+                </div>
+            </div>
+        
+       
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Zona</label>
+                    <select asp-for="Zona" class="form-control" asp-items="@ViewBag.Zona"></select>
+                    <input asp-for="Zona" class="form-control" hidden />
+                 @*  <select asp-for="Zona" class="form-control">
+                        <option value="0">-</option> 
+                        <option value="1">Zona 1</option>
+                        <option value="2">Zona 2</option>
+                        <option value="3">Zona 3</option>
+                        <option value="4">Zona 4</option>
+                        <option value="5">Zona 5</option>
+                        <option value="6">Zona 6</option>
+                        <option value="7">Zona 7</option>
+                        <option value="8">Zona 8</option>
+                        <option value="9">Zona 9</option>
+                        <option value="10">Zona 10</option> 
+                        <option value="11">Zona 11</option>
+                        <option value="12">Zona 12</option>
+                        <option value="13">Zona 13</option>
+                        <option value="14">Zona 14</option>
+                        <option value="15">Zona 15</option>
+                        <option value="16">Zona 16</option>
+                        <option value="17">Zona 17</option> 
+                    </select>
+                    <span asp-validation-for="Zona" class="text-danger"></span>*@
+                </div>
+            </div>     
+            
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Field</label>
+                    <select asp-for="Field" class="form-control" asp-items="@ViewBag.Field"></select>
+                    <input asp-for="Field" class="form-control" hidden />
+                   @* <select asp-for="Field" class="form-control">
+                        <option value="0">-</option>
+                        <option value="1">Adera</option>
+                        <option value="2">Air Itam</option>
+                        <option value="3">Attaka</option>
+                        <option value="4">Badak</option>
+                        <option value="5">Bajubang</option>
+                        <option value="6">Balikpapan</option>
+                        <option value="7">Balongan</option>
+                        <option value="8">Bekapai</option>
+                        <option value="9">Bojonegoro</option>
+                        <option value="10">Bunyu</option> 
+                        <option value="11">Cemara</option>
+                        <option value="12">Central</option>
+                        <option value="13">Cepu</option>
+                        <option value="14">Cilamaya</option>
+                        <option value="15">Cilegon</option>
+                        <option value="16">Cirebon</option>
+                        <option value="17">Ctral Proc Unit</option>
+                        <option value="18">DonggiMantindok</option>
+                        <option value="19">Gresik</option>
+                        <option value="20">Handil CPA</option>
+                        <option value="21">Jakarta</option>
+                        <option value="22">Jambi</option>
+                        <option value="23">Jambi Merang</option>
+                        <option value="24">Jatibarang</option>
+                        <option value="25">Kalijapat</option>
+                        <option value="26">Kuala Lumpur</option>
+                        <option value="27">Kampar</option>
+                        <option value="28">Lamongan</option>
+				        <option value="29">Lawe - Lawe</option>
+                        <option value="30">Limau</option>
+                        <option value="31">Lirik</option>
+                        <option value="32">Marunda</option>
+                        <option value="33">Muara Karang</option>
+                        <option value="34">Mutiara</option>
+				        <option value="35">Nilam</option>
+                        <option value="36">NSO</option>
+                        <option value="37">Offshore</option>
+                        <option value="38">Ogan Komering</option>
+                        <option value="39">Pabelokan</option>
+                        <option value="40">Pangkalan Susu</option>
+                        <option value="41">Papua</option>
+                        <option value="42">Penajam</option>
+                        <option value="43">Pendopo</option>
+                        <option value="44">Poleng</option>
+                        <option value="45">Prabumulih</option>
+                        <option value="46">Ramba</option>
+				        <option value="47">Rantau</option>
+                        <option value="48">Rembang</option>
+                        <option value="49">SangaSanga</option>
+                        <option value="50">Sangatta</option>
+                        <option value="51">Santan</option>
+                        <option value="52">Sembakung</option>  
+				        <option value="53">Semberah</option>
+                        <option value="54">Senipah-Peciko</option>
+                        <option value="55">Sepinggan</option>
+                        <option value="56">Serang</option>
+                        <option value="57">Siak</option>
+                        <option value="58">Subang</option>
+                        <option value="59">Sukowati</option>
+                        <option value="60">Surabaya</option>
+				        <option value="61">Tambun</option>
+                        <option value="62">Tanjung</option>
+                        <option value="63">Tanjung Priok</option>
+                        <option value="64">Tarakan</option>
+                        <option value="65">Tempino</option>
+                        <option value="66">Tuban</option>  
+				    <option value="67">Yakin</option>
+                        <option value="68">Raja Tempirai</option>
+                    </select>
+                    <span asp-validation-for="Field" class="text-danger"></span>*@
+                </div>
+            </div>  
+
+        </div>
+        
+
+        <div class="form-group">
+            <div class="col text-center">
+                <input class="btn btn-primary" id="submit" type="submit" value="Konfirmasi" />
+                <a class="btn btn-light" asp-action="Index">Kembali</a>
+            </div>
+        </div>
+    </div>                    
+                        
+                        
+ </form>
+

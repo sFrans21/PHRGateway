@@ -1,0 +1,55 @@
+﻿@model WebSystem.Models.UserInfo
+
+@{
+    ViewData["Title"] = "Home Page";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+
+
+@*<div class="row menu-tab-title justify-content-md-center">
+        <div class="col-md-3 col-sm-3 col-xl-4 menu1">
+           <a href="#">Informasi Latar Belakang</a>
+        </div>
+    <div class="col-md-2 col-sm-2 col-xl-4 menu2">
+        <a href="#">Informasi Proses</a>
+        </div>
+</div>
+<div class="row justify-content-md-center menu1-content">
+    <div class="col-md-6 image-home-1">
+        <img src="/assets/img/TreeOnHand.png" alt="Alternate Text" />
+    </div>
+    <div class="col-md-6">
+       <div class="section-title">
+            <div class="content-title">
+                        MENGENAL
+                    </div>
+                    <div class="content-subtitle">
+                        CARBON CALCULATOR
+                    </div>
+                    <div class="button-selengkapnya">
+                <a class="btn btn-danger" asp-controller="Home" asp-action="BackgroundInfo">Selengkapnya <i class="fa fa-arrow-right"></i></a>
+                    </div>
+        </div>
+    </div>
+</div>
+<div class="row justify-content-md-center menu2-content">
+    <div class="col-md-6 image-home-2">
+        <img src="/assets/img/informasi-proses.png" alt="Alternate Text" />
+    </div>
+    <div class="col-md-6">
+        <div class="section-title">
+            <div class="content-title">
+                CARA KERJA
+            </div>
+            <div class="content-subtitle">
+                CARBON CALCULATOR
+            </div>
+            <div class="button-selengkapnya">
+                <a class="btn btn-danger" asp-controller="Home" asp-action="Help">Selengkapnya <i class="fa fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </div>
+</div>*@
+<div class="hitung-container">
+    <a class="btn btn-success hitung-button" asp-controller="Periode" asp-action="Index">Hitung Emisi sekarang</a>
+</div>

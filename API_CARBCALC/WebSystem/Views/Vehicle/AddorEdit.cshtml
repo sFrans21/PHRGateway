@@ -1,0 +1,88 @@
+﻿@model WebSystem.Models.Household
+
+@{
+    ViewData["Title"] = "AddorEdit";
+}
+
+<div class="d-flex justify-content-center pt-4">
+    <div class="card text-white bg-danger" style="width: 12rem;">
+        <div class="card-body text-center" style="padding: 0.25rem;">
+            <p class="card-text"><i class="fa fa-calendar"></i> Bulan-Tahun</p>
+        </div>
+    </div>
+</div>
+
+<div class="text-center">
+    <h2>Hai, User_login</h2>
+    <h3>Hitung emisi <span id="subtext">karbon di tempat tinggal</span> kamu</h3>
+</div>
+
+<nav>
+    <div class="nav nav-tabs nav-pills nav-justified flex-sm-row" id="nav-tab" role="tablist">
+        <a class="nav-item nav-link active" id="nav-rumah-tab" data-toggle="tab" href="#nav-rumah" role="tab" aria-controls="nav-rumah" aria-selected="true" idSpan="1" spanName="karbon di tempat tinggal"><i class="fa fa-house"></i> Rumah</a>
+        <a class="nav-item nav-link disabled" id="nav-kendaraan-tab" href="#nav-kendaraan" role="tab" aria-controls="nav-kendaraan" aria-selected="false" idSpan="1" spanName="karbon kendaraan"><i class="fa fa-car"></i> Kendaraan</a>
+        <a class="nav-item nav-link disabled" id="nav-serapan-tab" href="#nav-serapan" role="tab" aria-controls="nav-serapan" aria-selected="false" idSpan="1" spanName="serapan karbon"><i class="fa fa-tree"></i> Serapan Karbon</a>
+    </div>
+</nav>
+
+<div class="tab-content" id="nav-tabContent">
+
+    @*tempat tinggal*@
+    <div class="tab-pane fade show active" id="nav-rumah" role="tabpanel" aria-labelledby="nav-rumah-tab">
+        <div class="row" style="margin-top: 50px">
+            <div class="col-md-12">
+                <form asp-action="AddorEdit" method="post">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Jumlah orang dalam rumah</label>
+                                <input asp-for="AmountPeople" class="form-control" placeholder="Input here" />
+                                <span asp-validation-for="AmountPeople" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Konsumsi gas LPG bulan ini (KG)</label>
+                                <input asp-for="LpgConsumption" class="form-control" placeholder="Input here" />
+                                <span asp-validation-for="LpgConsumption" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Standmeter listrik bulan ini (kWh)</label>
+                                <input asp-for="Standmeter" class="form-control" placeholder="Input here" />
+                                <span asp-validation-for="Standmeter" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Konsumsi Gas Kota Bulan ini (M<sup>3</sup>)</label>
+                                <input asp-for="CityGasConsumption" class="form-control" placeholder="Input here" />
+                                <span asp-validation-for="CityGasConsumption" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col text-center">
+                            <input type="submit" value="kalkulasi" class="btn btn-primary" />
+                            @*<a class="btn btn-primary" asp-action="HouseholdCalc">kalkulasi</a>*@
+                            @*<input class="btn btn-primary" type="submit" name="Submit" value="Kalkulasi" />*@
+                            @*<input class="btn btn-danger" type="reset" name="Reset" value="Clear" />*@
+                            @*<input class="btn btn-secondary" type="submit" name="Back" value="Kembali" />*@
+                            <a class="btn btn-light" asp-action="Index">Kembali</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    @*kendaraan*@
+    <div class="tab-pane fade" id="nav-kendaraan" role="tabpanel" aria-labelledby="nav-kendaraan-tab"></div>
+
+    @*serapan karbon*@
+    <div class="tab-pane fade" id="nav-serapan" role="tabpanel" aria-labelledby="nav-serapan-tab"></div>
+</div>

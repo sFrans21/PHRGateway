@@ -1,0 +1,106 @@
+﻿@model WebSystem.Models.TblTUser
+
+@{
+    ViewData["Title"] = "User Profile Detail";
+}
+
+<style>
+    .span-calc {
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+    .label-calc {
+        font-size: 20px;
+    }
+
+    .input-label {
+        background: rgba(0, 0, 0, 0);
+        border: none;
+        text-align: center;
+    }
+</style>
+
+
+<form asp-action="Konfirmasi" method="post">
+    <div id="variabel">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Nama</label>                 
+                    <input asp-for="Name" class="form-control" disabled/>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Email</label>
+                    <input asp-for="Email" class="form-control" disabled/>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Company</label>
+                    <input asp-for="userID" class="form-control" type="hidden" />
+                    <select asp-for="Company" class="form-control" asp-items="@ViewBag.Company" disabled></select>
+                    <input asp-for="Company" class="form-control" hidden />
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Regional</label>
+                   <select asp-for="Regional" class="form-control" asp-items="@ViewBag.Regional" disabled></select>
+                    <input asp-for="Regional" class="form-control" hidden />
+                                   
+                </div>
+            </div>
+        
+       
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Zona</label>
+                    <select asp-for="Zona" class="form-control" asp-items="@ViewBag.Zona" disabled></select>
+                    <input asp-for="Zona" class="form-control" hidden />
+                 
+                </div>
+            </div>     
+            
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Field</label>
+                    <select asp-for="Field" class="form-control" asp-items="@ViewBag.Field" disabled></select>
+                    <input asp-for="Field" class="form-control" hidden />
+                   
+                </div>
+            </div>
+            
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Admin Type</label>                   
+
+                    <select asp-for="IsAdmin" class="form-control" disabled>
+                        <option value="1">Super Admin</option>
+                        <option value="2">Admin Regional</option>
+                        <option value="3">Admin Zona</option>
+                        <option value="4">Admin Field</option>
+                        <option value="5">Staff</option>                        
+                    </select>
+                    <input asp-for="IsAdmin" class="form-control" hidden />
+
+                </div>
+            </div>
+
+        </div>
+        
+
+        <div class="form-group">
+            <div class="col text-center">                
+                <a class="btn btn-primary" asp-action="Master_User">Kembali</a>
+            </div>
+        </div>
+    </div>                    
+                        
+                        
+ </form>
+

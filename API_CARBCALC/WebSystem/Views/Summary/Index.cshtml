@@ -1,0 +1,315 @@
+﻿@model FnGetSummary
+
+@{
+    ViewData["Title"] = "Index";
+}
+<style>
+    .btn-ver button {
+        display: block;
+    }
+
+    .box-item {
+        background-color: #767676;
+        width: 350px;
+        border: none;
+        padding: 10px;
+        margin: 5px;
+    }
+
+    .box-item-bbm {
+        background-color: #767676;
+        width: 530px;
+        border: none;
+        padding: 10px;
+        margin: 5px;
+    }
+
+    .box-emisi {
+        background-color: #767676;
+        border: none;
+        padding: 10px;
+        margin: 17px;
+    }
+
+    .box-outside {
+        border: 1px solid #A5A5A5;
+        padding: 10px;
+        margin: 5px;
+    }
+
+    .text-col {
+        color: #000000;
+    }
+
+    .box-button {
+        border: 1px solid #A5A5A5;
+        padding: 10px;
+        margin: 5px;
+        margin-top: 30px;
+        height: 221px;
+    }
+
+    .box-outside-serapankarbon {
+        border: 1px solid #A5A5A5;
+        padding: 10px;
+        margin: 5px;
+        height: 295px;
+    }
+
+    .box-item-serapankarbon {
+        background-color: #28a745;
+        width: 425px;
+        border: none;
+        padding: 10px;
+        margin: 5px;
+        height: 265px;
+    }
+
+    .date-period {
+        width: 420px;
+        height: 136px;
+        left: 880px;
+        top: 549px;
+        font-weight: 400;
+        font-size: 50px;
+        line-height: 60px;
+        align-items: center;
+        color: #1b6ec2;
+    }
+</style>
+
+<partial name="_HomeButton" />
+
+<div class="d-flex justify-content-center" style="padding: 20px">
+    <div class="card text-white bg-success" style="width: 12rem;">
+        <div class="card-body text-center" style="padding: 0.25rem;">
+            <a class="btn text-white" asp-controller="Periode" asp-action="Index"><i class="fa fa-calendar"></i> @ViewBag.Periode </a>
+        </div>
+    </div>
+</div>
+
+<h5 class="text-col">Detail Ringkasan Emisi</h5>
+@*periode*@
+<div class="col-md-12">
+
+    @* <form action="/" method="post">*@
+    <form asp-controller="Summary" asp-action="Index">
+        <div class="row" style="margin-top: 20px">
+            <div class="col-md-6">
+                <input asp-for="userID" class="form-control" hidden />
+                <input asp-for="PeriodeId" class="form-control" hidden />
+                <div class="form-group">
+                    <label>From</label>
+                    <input asp-for="FromDate" type="text" class="form-control" id="Sdate" placeholder="From Date" autocomplete="off" />
+                    @*<span id="tanggal_name">span kiri</span>*@
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>To</label>
+                    <input asp-for="ToDate" type="text" class="form-control" id="Edate" placeholder="To Date" autocomplete="off" />
+                    @*<span id="tanggal_name">span kiri</span>*@
+                </div>
+            </div>
+        </div>
+        @*<div class="row col text-center" style="margin-top: 150px">*@
+
+        @* </div>*@
+        <div class="form-group">
+            <div class="col text-center">
+                <input type="submit" value="Filter" class="btn btn-primary" />
+                <a class="btn btn-light" asp-controller="Periode" asp-action="Index">Kembali</a>
+                @*<input class="btn btn-primary" type="submit" value="selanjutnya" />*@
+                @*<input class="btn btn-danger" type="reset" name="Reset" value="Clear" />*@
+            </div>
+        </div>
+    </form>
+</div>
+
+@*<div class="tab-pane fade show active" id="nav-periode" role="tabpanel" aria-labelledby="nav-periode-tab">
+        <div class="col-md-12">
+
+            <form asp-controller="Household" asp-action="Index">
+
+                <div class="form-group">
+                    <div class="col text-center">
+                        <input type="submit" value="Selanjutnya" class="btn btn-primary" />
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+*@
+<div class="row text-white">
+    <div class="col box-outside">
+        <div class="row text-center" style="margin-left: 15px;">
+            <div class="box-item">
+                <div class="col-sm">
+                    <label><strong>AKUMULASI KONSUMSI LISTRIK</strong></label> </br>
+                    <label>Bulan berjalan dalam KWh</label> </br>
+                    <label style="font-size: 25px;"><strong>@ViewBag.electriccons</strong></label>
+                </div>
+            </div>
+            <div class="box-item">
+                <div class="col-sm">
+                    <label><strong>AKUMULASI PEMAKAIAN LISTRIK</strong></label> </br>
+                    <label>Per Orang/ Bulan dalam KWh</label> </br>
+                    <label style="font-size: 25px;"><strong>@ViewBag.electricuse</strong></label>
+                </div>
+            </div>
+            <div class="box-item">
+                <div class="col-sm">
+                    <label><strong>AKUMULASI EMISI CO<sub>2</sub> DARI LISTRIK</strong></label> </br>
+                    <label>Ton CO<sub>2</sub> Per Orang/ Bulan</label> </br>
+                    <label style="font-size: 25px;"><strong>@ViewBag.listrik</strong></label>
+                </div>
+            </div>
+        </div>
+        <div class="row text-center" style="margin-left: 15px;">
+            <div class="box-item">
+                <div class="col-sm">
+                    <label><strong>AKUMULASI PEMAKAIAN GAS</strong></label> </br>
+                    <label>Bulan berjalan dalam M<sup>3</sup></label> </br>
+                    <label style="font-size: 25px;"><strong>@ViewBag.gascons</strong></label>
+                </div>
+            </div>
+            <div class="box-item">
+                <div class="col-sm">
+                    <label><strong>AKUMULASI PEMAKAIAN GAS</strong></label> </br>
+                    <label>Per Orang/ Bulan dalam M<sup>3</sup></label> </br>
+                    <label style="font-size: 25px;"><strong>@ViewBag.gasuse</strong></label>
+                </div>
+            </div>
+            <div class="box-item">
+                <div class="col-sm">
+                    <label><strong>AKUMULASI EMISI CO<sub>2</sub> DARI GAS</strong></label> </br>
+                    <label>Ton CO<sub>2</sub> Per Orang/ Bulan</label> </br>
+                    <label style="font-size: 25px;"><strong>@ViewBag.gas</strong></label>
+                </div>
+            </div>
+        </div>
+        <div class="row text-center" style="margin-left: 15px;">
+            <div class="box-item-bbm">
+                <div class="col-sm">
+                    <label><strong>AKUMULASI PEMAKAIAN BBM</strong></label> </br>
+                    <label>Bulan berjalan dalam Liter</label> </br>
+                    <label style="font-size: 25px;"><strong>@ViewBag.bbmbulan</strong></label>
+                </div>
+            </div>
+            @*<div class="box-item">
+                    <div class="col-sm">
+                        <label><strong>AKUMULASI PEMAKAIAN BBM</strong></label> </br>
+                        <label>Per Orang/ Bulan dalam Liter</label> </br>
+                        <label style="font-size: 25px;"><strong>@ViewBag.bbmtahun</strong></label>
+                    </div>
+                </div>*@
+            <div class="box-item-bbm">
+                <div class="col-sm">
+                    <label><strong>AKUMULASI EMISI CO<sub>2</sub> DARI BBM</strong></label> </br>
+                    <label>Ton CO<sub>2</sub> Per Orang/ Bulan</label> </br>
+                    <label style="font-size: 25px;"><strong>@ViewBag.emisibbm</strong></label>
+                </div>
+            </div>
+        </div>
+        <div class="box-emisi">
+            <div class="row text-center">
+                <div class="col-sm">
+                    <label><strong>TOTAL AKUMULASI EMISI CO<sub>2</sub></strong></label> </br>
+                    <label>Ton CO<sub>2</sub> Per Orang/ Bulan</label> </br>
+                    <label style="font-size: 25px;"><strong>@ViewBag.co2</strong></label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div>
+    <div class="row text-white">
+        <div class="col">
+            <div class="row">
+                <div class="col-sm">
+                    <h5 class="text-col">Ringkasan Serapan Karbon</h5>
+                </div>
+            </div>
+            <div class="box-outside text-center">
+                <div class="row box-item">
+                    <div class="col-sm">
+                        <label><strong>POHON DITANAM</strong></label> </br>
+                        <label>Jumlah Pohon</label> </br>
+                        <label style="font-size: 25px;"><strong>@ViewBag.plant</strong></label>
+                    </div>
+                </div>
+                <div class="row box-item">
+                    <div class="col-sm">
+                        <label><strong>TOTAL SERAPAN KARBON</strong></label> </br>
+                        <label>Ton CO<sub>2</sub> Per Orang/ Bulan</label> </br>
+                        <label style="font-size: 25px;"><strong>@ViewBag.abs</strong></label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="row">
+                <div class="col-sm">
+                    <h5 class="text-col">Ringkasan Karbon Netral</h5>
+                </div>
+            </div>
+            <div class="box-outside-serapankarbon">
+                <div class="box-item-serapankarbon">
+                    <div class="row text-center">
+                        <div class="col-sm" style="margin-top:70px;">
+                            <label><strong>EMISI KARBON FINAL</strong></label> </br>
+                            <label>Emisi Daya serap (Ton CO<sub>2</sub> Per Orang/ Bulan)</label> </br>
+                            <label style="font-size: 25px;"><strong>@ViewBag.final</strong></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="row">
+                <div class="col-sm btn-ver">
+                    @*<a class="btn btn-primary btn-lg btn-block" style="margin-top:40px;"><i class="fa fa-bar-chart"></i> Lihat Grafik</a>*@
+                    <a class="btn btn-success btn-lg btn-block" style="margin-top:150px;" href="@ViewBag.url/CreateCertificate.aspx?strSerapanKarbon=@ViewBag.abs&strC02=@ViewBag.co2&strTotal=@ViewBag.final&strUserName=@ViewBag.Displayname&strFromDate=@ViewBag.FromDate&strToDate=@ViewBag.ToDate" target="_blank"><i class="fa fa-file-pdf"></i> Cetak Sertifikat</a>
+                    <!-- <a class="btn btn-success btn-lg btn-block" style="margin-top:150px;" href="@ViewBag.url/CreateCertificate.aspx?strSerapanKarbon=@ViewBag.abs&strC02=@ViewBag.co2&strTotal=@ViewBag.final&strUserName=@ViewBag.Displayname&strMonth=@ViewBag.MonthName&strYear=@ViewBag.Year" target="_blank"><i class="fa fa-file-pdf"></i> Cetak Sertifikat</a>-->
+                    <!-- <a class="btn btn-success btn-lg btn-block" asp-controller="Summary" asp-action="CreatePdf" style="margin-top:10px;" ><i class="fa fa-file-pdf"></i> Cetak Sertifikat</a>-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script>
+        var date = new Date();
+        //var date = @ViewBag.SelectedPeriode;
+        //var year = date.getFullYear(); //get year
+        //var month = date.getMonth(); //get month
+
+
+        var year = @ViewBag.Year; //get year
+        var month = @ViewBag.Month; //get month
+
+        $(document).ready(function () {
+            $("#Sdate").datepicker({
+                autoclose: true,
+                zIndex: 2048,
+                format: "dd-MM-yyyy"
+                //,clearBtn: true
+            }).on('changeDate', function (selected) {
+                var minDate = new Date(selected.date.valueOf());
+                $('#Edate').datepicker('setStartDate', minDate);
+            });
+
+            $("#Edate").datepicker({
+                autoclose: true,
+                zIndex: 2048,
+                format: "dd-MM-yyyy"
+                //,clearBtn: true
+            }).on('changeDate', function (selected) {
+                var minDate = new Date(selected.date.valueOf());
+                $('#Sdate').datepicker('setEndDate', minDate);
+            });
+        });
+    </script>
+}

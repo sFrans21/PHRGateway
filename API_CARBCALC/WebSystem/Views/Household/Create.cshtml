@@ -1,0 +1,327 @@
+﻿@model Household
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<style>
+    .span-calc {
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+    .label-calc {
+        font-size: 20px;
+    }
+</style>
+
+<partial name="_HomeButton" />
+
+<div class="d-flex justify-content-center pt-2">
+    <div class="card text-white bg-danger" style="width: 12rem;">
+        <div class="card-body text-center" style="padding: 0.25rem;">
+            @*<p class="card-text"><i class="fa fa-calendar"></i> @ViewBag.periodedetail</p>*@
+            <a class="btn text-white" asp-controller="Periode" asp-action="Index" title="Ke Halaman Periode"><i class="fa fa-calendar"></i> @ViewBag.periodedetail</a>
+        </div>
+    </div>
+</div>
+
+<div class="text-center" style="padding-top:15px;">
+    @*<h2>Hai, @ViewBag.Displayname</h2>*@
+    <h3>Hitung emisi karbon di tempat tinggal kamu</h3>
+    @*<div style="margin: 0 auto;"><h3>Hitung emisi karbon di tempat tinggal kamu</h3></div>*@
+</div>
+
+<nav>
+    <div class="nav nav-tabs nav-pills nav-justified flex-sm-row" id="nav-tab" role="tablist">
+        @*<a class="nav-item nav-link active" id="nav-rumah-tab" data-toggle="tab" href="#nav-rumah" role="tab" aria-controls="nav-rumah" aria-selected="true" idSpan="1" spanName="karbon di tempat tinggal"><i class="fa fa-house"></i> Rumah</a>
+        <a class="nav-item nav-link disabled" id="nav-kendaraan-tab" href="#nav-kendaraan" role="tab" aria-controls="nav-kendaraan" aria-selected="false" idSpan="1" spanName="karbon kendaraan"><i class="fa fa-car"></i> Kendaraan</a>
+        <a class="nav-item nav-link disabled" id="nav-serapan-tab" href="#nav-serapan" role="tab" aria-controls="nav-serapan" aria-selected="false" idSpan="1" spanName="serapan karbon"><i class="fa fa-tree"></i> Serapan Karbon</a>*@
+        <a class="nav-item nav-link active" asp-controller="Household" asp-action="Index"><img src="/assets/img/home_nav.png" style="width:25px;" /> Tempat Tinggal</a>
+        <a class="nav-item nav-link disabled" asp-controller="Vehicle" asp-action="Index"><img src="/assets/img/vehicle_nav.png" style="width:25px;" /> Kendaraan</a>
+        <a class="nav-item nav-link disabled" asp-controller="CarbonAbsorption" asp-action="Index"><img src="/assets/img/Tree_nav.png" style="width:25px;" /> Serapan Karbon</a>
+    </div>
+</nav>
+
+<div class="tab-content" id="nav-tabContent">
+
+    @*tempat tinggal*@
+    <div class="tab-pane fade show active" id="nav-rumah" role="tabpanel" aria-labelledby="nav-rumah-tab">
+        <div class="row" style="margin-top: 50px">
+            <div class="col-md-12">
+                <form asp-action="Create" method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div id="variabel">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Jumlah orang dalam rumah</label>
+                                    <input asp-for="AmountPeople" class="form-control" placeholder="Input here" min="0" />
+                                    <span asp-validation-for="AmountPeople" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Konsumsi gas LPG bulan ini (KG) <a data-toggle="modal" data-target="#lpgHelp" href="#"><i class="fa fa-question-circle"></i></a></label>
+                                    <input asp-for="LpgConsumption" class="form-control" placeholder="Input here" autocomplete="off" type="number" step="any" min="0" />
+                                    <span asp-validation-for="LpgConsumption" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Konsumsi listrik bulan ini (kWh) <a data-toggle="modal" data-target="#listrikHelp" href="#"><i class="fa fa-question-circle"></i></a></label>
+                                    <input asp-for="Standmeter" class="form-control" placeholder="Input here" autocomplete="off" type="number" step="any" min="0" />
+                                    <span asp-validation-for="Standmeter" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Konsumsi Gas Kota Bulan ini (M<sup>3</sup>) <a data-toggle="modal" data-target="#gasHelp" href="#"><i class="fa fa-question-circle"></i></a></label>
+                                    <input asp-for="CityGasConsumption" class="form-control" placeholder="Input here" autocomplete="off" type="number" step="any" min="0" />
+                                    <span asp-validation-for="CityGasConsumption" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col text-center">
+                                <input class="btn btn-primary" id="Create" type="submit" value="Kalkulasi" />
+                                <a class="btn btn-light" asp-action="Index">Kembali</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="kalkulasi">
+                        <div class="row text-center">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="label-calc">Jumlah orang dalam rumah</label>
+                                    <div>
+                                        <label class="span-calc">@Html.DisplayFor(model => model.AmountPeople)</label>
+                                    </div>
+                                    <span asp-validation-for="AmountPeople" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="label-calc">Konsumsi gas LPG bulan ini (KG)</label>
+                                    <div>
+                                        <label class="span-calc">@Html.DisplayFor(model => model.LpgConsumption)</label>
+                                    </div>
+                                    <span asp-validation-for="LpgConsumption" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row text-center">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="label-calc">Konsumsi listrik bulan ini (kWh)</label>
+                                    <div>
+                                        <label class="span-calc">@Html.DisplayFor(model => model.Standmeter)</label>
+                                    </div>
+                                    <span asp-validation-for="Standmeter" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="label-calc">Konsumsi Gas Kota Bulan ini (M<sup>3</sup>)</label>
+                                    <div>
+                                        <label class="span-calc">@Html.DisplayFor(model => model.CityGasConsumption)</label>
+                                    </div>
+                                    <span asp-validation-for="CityGasConsumption" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+
+                            @*bulan*@
+                            <div class="col-md-6 text-center">
+                                <div class="d-flex justify-content-center pt-4">
+                                    <div class="card text-white bg-danger" style="width: 30rem; border-radius:0;">
+                                        <div class="card-body text-center" style="padding: 0.50rem;">
+                                            <p class="card-text" style="font-size: 1.4rem;">AKUMULASI BULAN INI</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="label-calc">Konsumsi Listrik (kWh)</label>
+                                    <div>
+                                        <span class="span-calc">@ViewBag.konsumsilistrik</span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="label-calc">Konsumsi LPG (Kg)</label>
+                                    <div>
+                                        <span class="span-calc">@ViewBag.konsumsilpg</span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="label-calc">Konsumsi Gas Kota (M<sup>3</sup>)</label>
+                                    <div>
+                                        <span class="span-calc">@ViewBag.konsumsigascity</span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="label-calc">Emisi CO<sup>2</sup> dari listrik (KG CO<sup>2</sup>)</label>
+                                    <div>
+                                        <span class="span-calc">@ViewBag.emisicolistrik</span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="label-calc">Emisi CO<sup>2</sup> dari gas (KG CO<sup>2</sup>)</label>
+                                    <div>
+                                        <span class="span-calc">@ViewBag.emisicogas</span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="label-calc">Emisi CO<sup>2</sup> per orang (KG CO<sup>2</sup>)</label>
+                                    <div>
+                                        <span class="span-calc">@ViewBag.emisicoperson</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            @*tahun*@
+                            <div class="col-md-6 text-center">
+                                <div class="d-flex justify-content-center pt-4">
+                                    <div class="card text-white bg-primary" style="width: 30rem; border-radius:0;">
+                                        <div class="card-body text-center" style="padding: 0.50rem;">
+                                            <p class="card-text" style="font-size: 1.4rem;">AKUMULASI SETAHUN</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="label-calc">Konsumsi Listrik (kWh)</label>
+                                    <div>
+                                        <span class="span-calc">@ViewBag.konsumsilistrikyear</span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="label-calc">Konsumsi LPG (Kg)</label>
+                                    <div>
+                                        <span class="span-calc">@ViewBag.konsumsilpgyear</span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="label-calc">Konsumsi Gas Kota (M<sup>3</sup>)</label>
+                                    <div>
+                                        <span class="span-calc">@ViewBag.konsumsigascityyear</span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="label-calc">Emisi CO<sup>2</sup> dari listrik (KG CO<sup>2</sup>)</label>
+                                    <div>
+                                        <span class="span-calc">@ViewBag.emisicolistrikyear</span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="label-calc">Emisi CO<sup>2</sup> dari gas (KG CO<sup>2</sup>)</label>
+                                    <div>
+                                        <span class="span-calc">@ViewBag.emisicogasyear</span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="label-calc">Emisi CO<sup>2</sup> per orang (KG CO<sup>2</sup>)</label>
+                                    <div>
+                                        <span class="span-calc">@ViewBag.emisicopersonyear</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col text-center">
+                                <input class="btn btn-primary" type="submit" value="Simpan" asp-action="Save" />
+                                <a class="btn btn-light" asp-action="Index">Kembali</a>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="infoModal" tabindex="-1" role="dialog" aria-labelledby="infoModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="infoModalLabel">Information</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    This is an information popup.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @*kendaraan*@
+    <div class="tab-pane fade" id="nav-kendaraan" role="tabpanel" aria-labelledby="nav-kendaraan-tab"></div>
+
+    @*serapan karbon*@
+    <div class="tab-pane fade" id="nav-serapan" role="tabpanel" aria-labelledby="nav-serapan-tab"></div>
+</div>
+
+<partial name="_HouseholdHelpModal" />
+
+
+
+@section Scripts {
+
+    <script>
+        $(document).ready(function () {
+            $('#infoModal').modal('show');
+        });
+    </script>
+
+    <script>
+        function HideOnLoad() {
+            $("#variabel").show();
+            $("#kalkulasi").hide();
+        }
+
+
+        $(document).ready(function () {
+            var konsumsilistrik = '@ViewBag.konsumsilistrik'
+            var konsumsilpg = '@ViewBag.konsumsilpg'
+            var konsumsigascity = '@ViewBag.konsumsigascity'
+            var emisicolistrik = '@ViewBag.emisicolistrik'
+            var emisicogas = '@ViewBag.emisicogas'
+            var emisicoperson = '@ViewBag.emisicoperson'
+
+            if (konsumsilistrik == '' || konsumsilpg == '' || konsumsigascity =='' || emisicolistrik == '' || emisicogas == '' || emisicoperson== '') {
+                HideOnLoad();
+            }
+            else {
+                $("#variabel").hide(500);
+                $("#kalkulasi").show(500);
+            }
+        });
+
+        $(document).ready(function () {
+            $("#submit").click(function () {
+                $("#variabel").hide(500);
+                $("#kalkulasi").show(500);
+            });
+        });
+
+        $(document).ready(function () {
+            $("#kembali").click(function () {
+                $("#variabel").show(500);
+                $("#kalkulasi").hide(500);
+            });
+        });
+    </script>
+
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

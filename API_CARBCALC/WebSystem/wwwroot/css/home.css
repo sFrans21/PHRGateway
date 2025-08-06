@@ -1,0 +1,210 @@
+﻿a:hover {
+    color:white;
+    font-weight:bold;
+    text-decoration: none; /* no underline */
+}
+.main-menu-box {
+    box-sizing: border-box;
+}
+
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 30px;
+}
+
+.flex-item {
+    background-color: white;
+    padding: 10px;
+    flex: 100%;
+    text-align: left;
+    margin-top: 100px;
+}
+
+.p1 {
+    font-size: 65px;
+    color: #ABC437;
+    margin-bottom: -15px;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+}
+
+    .user-info h3 {
+        font-weight: 500;
+        font-size: 20px;
+    }
+
+    .user-info p {
+        font-size: 12px;
+    }
+
+    .user-info img {
+        width: 60px;
+        border-radius: 50%;
+        margin-right: 15px;
+    }
+
+a {
+    color: white;
+}
+
+.hitung-container {
+    text-align: center;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 118px;
+}
+
+.hitung-button {
+    border-top-right-radius: 30px 30px;
+    border-top-left-radius: 30px 30px;
+    padding: 10px 30px 10px 30px;
+    background-color: #99b138;
+    margin-top: auto;
+    font-size: 24px;
+    font-weight: bold;
+    bottom: 118px;
+    left: 37%;
+    right: 37%;
+    position: fixed;
+}
+
+.white-box {
+    position: absolute;
+    z-index: -1;
+    margin: auto;
+    top: -7px;
+    right: 0;
+    bottom: 0;
+    /* left: 0; */
+    width: 50%;
+    height: 48%;
+    background-color: #ffff;
+}
+
+.image-home-1 img {
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    width: 390px;
+    height: 283px;
+    position: absolute;
+    /* margin: auto; */
+    top: 0px;
+    /* left: 0; */
+    bottom: 0;
+    right: -47px;
+}
+.image-home-2 img {
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    width: 390px;
+    height: 283px;
+    position: absolute;
+    /* margin: auto; */
+    top: 9px;
+    z-index:1;
+    bottom: 0;
+    right: -30px;
+}
+
+.content-title {
+    position: absolute;
+    font-weight: bold;
+    font-size: 30pt;
+    /*font-family: Futura;*/
+    top: 35px;
+    color: #99b138;
+}
+
+.content-subtitle {
+    font-size: 20pt;
+    position: absolute;
+    top: 75px;
+}
+
+.button-selengkapnya {
+    position: absolute;
+    bottom: 15px;
+    right: -29px;
+    color: #ffff;
+}
+
+    .button-selengkapnya .btn {
+        width: 200px;
+        border-radius: 0;
+    }
+
+    /*------------------------------*/
+  
+    .menu-tab-title{
+        color:white;
+        font-size:12pt;
+        text-align:center;
+        margin-top:30px;
+    }
+    .menu1{
+        position:relative;
+        text-align:center;
+        left:40px;
+    }
+        .menu1 :hover, .menu2 :hover {
+            border-bottom: 1px solid white;
+        }
+.menu2 {
+    
+    position: relative;
+    text-align: center;
+    left: -40px;
+}
+.section-title {
+    width: 310px;
+    height: 196px;
+    top: 74px;
+    position: absolute;
+    background-color: white;
+    left: 0;
+    padding-left:15px;
+}
+.active {
+    text-decoration:underline;
+}
+@media screen and (min-width: 1367px) {
+   .menu-tab-title {
+        font-size:18pt;
+        margin-top:100px;
+    }
+   .menu1 {
+       text-align:center;
+   }
+    .menu2 {
+        text-align: center;
+    }
+    .image-home-1 img {
+        width: 630px;
+        height: 430px;
+    }
+    .image-home-2 img {
+        width: 600px;
+        height: 430px;
+        top:15px;
+        left:10px;
+    }
+    .section-title {
+        width: 500px;
+        height: 300px;
+        top: 112px;
+    }
+   .content-title{
+       font-size:44pt;
+       top:65px;
+   }
+   .content-subtitle{
+       font-size:28pt;
+       top:125px;
+   }
+
+}

@@ -1,0 +1,94 @@
+﻿@model TblTUser
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/_LayoutUserLogin.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <!-- disable right click in browser -->
+    <script>
+        window.oncontextmenu = function () {
+            return false;
+        }
+        $(document).keydown(function (event) {
+            if (event.keyCode == 123) {
+                return false;
+            }
+            else if ((event.ctrlKey && event.shiftKey && event.keyCode == 73) || (event.ctrlKey && event.shiftKey && event.keyCode == 74)) {
+                return false;
+            }
+            
+        });
+    </script>
+
+</head>
+<body>
+
+    <form asp-action="GetIMANLogin_BD" method="post">
+        
+        <div class="container body-content">
+
+            <div class="d-flex justify-content-center">
+
+                <div class="col-md-5 login-box">
+                    <div class="text-center logo-box">
+                        @*<img src="~/other/assets/img/CarbonCalc_Logo.jpg" />*@
+                        <img src="/assets/img/CarbonCalc-Logo.jpg" />
+                    </div>
+                    <h5 class="text-dark" style="margin-bottom:30px;">Silahkan masuk terlebih dahulu</h5>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-text bg-light"><i class="fa fa-person"></i></span>
+                            @*<input class="form-control" type="text" placeholder="Username" />*@
+                            <!-- <input asp-for="UserName" class="form-control" placeholder="Username" /> -->
+                            <input asp-for="UserName" class="form-control" placeholder="Username" onkeypress='validate(event)' maxlength="30" required tabindex="34" onCopy="return false" onDrag="return false" onDrop="return false" onPaste="return false" autocomplete=off />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-text bg-light"><i class="fa fa-lock"></i></span>
+                            @*<input class="form-control" type="password" placeholder="Password" />*@
+                            <input asp-for="Password" type="password" class="form-control" placeholder="Password" />
+                        </div>
+                    </div>
+
+                    @{
+                        if (ViewBag.IsAuthenticated == false)
+                        {
+                            //Html.Label("Username dan Password tidak cocok.");
+                                <font color="red"><label for="lblWarning">Username atau Password tidak cocok.</label></font>
+                        }
+                    }
+                    <div class="input-group">
+                        <!-- <input asp-for="lblWarning" class="form-control" /> -->
+                    </div>
+
+
+                    <div style="padding-top:25px;">
+                        <input class="btn btn-primary btn-block" type="submit" value="Masuk" asp-action="GetIMANLogin_BD" />
+                    </div>
+
+                    <div class="info-login">
+                        <p>
+                            Untuk melakukan login, mohon menggunakan username dan password domain Pertamina.com, Berikut :<br>
+                            - Akun Domain Pertamina.com<br>
+                            &nbsp;&nbsp;<b><a style="color:green">a.budi</a>&nbsp;&nbsp;<a style="text-decoration: line-through;">a.budi@pep.pertamina.com</a></b><br>
+                            - Password : Sesuai dengan domain Pertamina.com
+                        </p>
+                    </div>
+                </div>
+            </div>  
+        </div>
+
+
+</form>
+
+    
+</body>
+</html>

@@ -1,0 +1,214 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PHR API Gateway</title>
+    <style>
+        /* Mengimpor Font 'Poppins' yang modern dan sering digunakan di aplikasi korporat */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            /* Latar belakang putih bersih */
+            background-color: #f4f6f9;
+            color: #333;
+        }
+
+        /* Container utama */
+        .container {
+            text-align: center;
+            padding: 40px 50px;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            max-width: 650px;
+            width: 90%;
+            /* Border atas dengan warna khas Pertamina */
+            border-top: 5px solid #E32118; /* Merah Pertamina */
+        }
+
+        /* Logo atau Ikon */
+        .icon img {
+            width: 350px; /* Anda bisa mengganti dengan logo jika punya */
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        /* Judul utama */
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            /* Warna biru tua Pertamina */
+            color: #0073C4;
+        }
+
+        /* Paragraf deskripsi */
+        p {
+            font-size: 1.1rem;
+            color: #555;
+            line-height: 1.7;
+        }
+
+        .docs-button {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 12px 30px;
+            background-color: #E32118; /* Merah Pertamina */
+            color: #ffffff;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .docs-button:hover {
+            background-color: #c21a12; /* Warna merah sedikit lebih gelap saat disentuh */
+            transform: translateY(-2px); /* Efek sedikit terangkat */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+
+        .separator {
+            border: none;
+            height: 1px;
+            background-color: #e0e0e0;
+            margin: 35px 0;
+        }
+
+        /* Sub-Judul Dokumentasi */
+        .docs-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 25px;
+        }
+
+        /* Container untuk barisan tombol */
+        .button-bar {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px; /* Jarak antar tombol */
+        }
+
+        /* Desain Baru untuk Tombol Dokumentasi */
+        .docs-button {
+            display: inline-flex;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #ffffff; /* Latar belakang putih */
+            color: #0073C4; /* Warna teks biru Pertamina */
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 8px;
+            border: 2px solid #0073C4; /* Border biru */
+            transition: all 0.3s ease;
+        }
+
+        /* Efek saat kursor menyentuh tombol */
+        .docs-button:hover {
+            background-color: #0073C4; /* Latar belakang menjadi biru */
+            color: #ffffff; /* Teks menjadi putih */
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(0, 115, 196, 0.2);
+        }
+
+        /* Styling untuk Ikon SVG di dalam tombol */
+        .docs-button svg {
+            margin-right: 8px;
+            width: 18px;
+            height: 18px;
+        }
+
+        /* Status aktif dengan warna hijau */
+        /*.status {
+            display: inline-block;
+            margin-bottom: 25px;
+            padding: 8px 20px;
+            background-color: #e8f5e9;*/ /* Hijau muda */
+            /*color: #2e7d32;*/ /* Hijau tua */
+            /*border-radius: 50px;
+            font-weight: 600;
+        }*/
+
+        /* Footer */
+        footer {
+            position: absolute;
+            bottom: 20px;
+            font-size: 0.9rem;
+            color: #a0a0a0;
+        }
+    </style>
+</head>
+<body>
+
+    <!--<main class="container">
+        <div class="icon">
+            <img src="/images/logo PR1MA.jpg" alt="PR1MA Logo">
+        </div>
+        <h1>API Gateway is Active</h1>
+        <div class="status">
+            <span>●</span> Online & Ready
+        </div>
+        <p>
+            This gateway provides integrated services for the PHR ecosystem.
+            Use an API Client to interact with the endpoints.
+        </p>
+        <div class="button-bar">
+            <a href="/carbon/swagger/index.html" class="docs-button" target="_blank">WebSystem Docs</a>
+            <a href="/whd/swagger/index.html" class="docs-button" target="_blank">WHD Docs</a>
+            <a href="/mfa/swagger/index.html" class="docs-button" target="_blank">MFA Docs</a>
+            <a href="/broadcast/swagger/index.html" class="docs-button" target="_blank">Broadcast Docs</a>
+        </div>
+    </main>-->
+
+
+    <main class="container">
+        <div class="icon">
+            <img src="/images/logo PR1MA.jpg" alt="PR1MA Logo" style="width: 350px; height: auto; margin-bottom: 20px;">
+        </div>
+        <h1>API Gateway is Active</h1>
+        <!--<div class="status">
+            <span>●</span> Online & Ready
+        </div>-->
+        <p>
+            This gateway provides integrated services for the PHR ecosystem.
+        </p>
+
+        <hr class="separator">
+
+        <h2 class="docs-title">Dokumentasi Layanan</h2>
+
+        <div class="button-bar">
+            <a href="/carbon/swagger/index.html" class="docs-button" target="_blank">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+                <span>WebSystem</span>
+            </a>
+            <a href="/whd/swagger/index.html" class="docs-button" target="_blank">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+                <span>WHD</span>
+            </a>
+            <a href="/mfa/swagger/index.html" class="docs-button" target="_blank">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+                <span>MFA</span>
+            </a>
+            <a href="/broadcast/swagger/index.html" class="docs-button" target="_blank">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+                <span>Broadcast</span>
+            </a>
+        </div>
+    </main>
+
+    <footer>
+        PT Pertamina Hulu Rokan
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,82 @@
+﻿@model WebSystem.Models.VwMasterVehicleFormula
+
+@{
+    ViewData["Title"] = "Detail Formula Kendaraan";
+}
+
+<style>
+    .span-calc {
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+    .label-calc {
+        font-size: 20px;
+    }
+
+    .input-label {
+        background: rgba(0, 0, 0, 0);
+        border: none;
+        text-align: center;
+    }
+</style>
+
+
+<form asp-action="Konfirmasi" method="post">
+    <div id="variabel">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Kendaraan</label>
+                    <select asp-for="VehicleId" class="form-control" asp-items="@ViewBag.Vehicle" disabled></select>
+                    <input asp-for="VehicleId" class="form-control" hidden />
+
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Jenis Transportasi @*<a data-toggle="modal" data-target="#JenisTransportHelp" href="#"><i class="fa fa-question-circle"></i></a>*@</label>
+                    <select asp-for="TransportGroupid" class="form-control" asp-items="@ViewBag.Transporttasi"></select>
+                    <input asp-for="TransportGroupid" class="form-control" hidden />
+
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Bahan Bakar @*<a data-toggle="modal" data-target="#FuelHelp" href="#"><i class="fa fa-question-circle"></i></a>*@</label>
+                    <select asp-for="FuelId" class="form-control" asp-items="@ViewBag.Fuel"></select>
+                    <input asp-for="FuelId" class="form-control" hidden />
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Jumlah Penumpang </label>
+                    <input asp-for="TransportCapacity" class="form-control" placeholder="Input here" min="0" />
+                    <span asp-validation-for="TransportCapacity" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>KM/Liter </label>
+                    <input asp-for="TransportKMperLiter" class="form-control" placeholder="Input here" min="0" />
+                    <span asp-validation-for="TransportKMperLiter" class="text-danger"></span>
+                </div>
+            </div>
+
+        </div>
+        
+
+        <div class="form-group">
+            <div class="col text-center">                
+                <a class="btn btn-primary" asp-action="Master_VehicleFormula">Kembali</a>
+            </div>
+        </div>
+    </div>                    
+                        
+                        
+ </form>
+
