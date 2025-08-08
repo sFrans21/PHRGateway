@@ -1,24 +1,6 @@
 {
   "Routes": [
-    //{
-    //  "DownstreamPathTemplate": "/{everything}",
-    //  "DownstreamScheme": "https",
-    //  "DownstreamHostAndPorts": [
-    //    {
-    //      "Host": "localhost",
-    //      "Port": 44366
-    //    }
-    //  ],
-    //  "UpstreamPathTemplate": "/websystem/{everything}",
-    //  "UpstreamHttpMethod": [ "GET" ],
-    //  "Priority": 0,
-    //  "RateLimitOptions": {
-    //    "EnableRateLimiting": true,
-    //    "Period": "10s",
-    //    "PeriodTimespan": 5,
-    //    "Limit": 3
-    //  }
-    //},
+ 
     {
       "DownstreamPathTemplate": "/api/Household/GetbyUser/{userId}/{year}",
       "DownstreamScheme": "https",
@@ -68,8 +50,6 @@
         "EnableContentHashing": false
       }
     },
-
-    // --- Rute untuk APICarbonCalculator (Port 44366) ---
 
     {
       "DownstreamPathTemplate": "/swagger/{everything}",
@@ -266,7 +246,7 @@
       }
     },
 
-    // --- Rute untuk APIMFA (Port 44303) ---
+
 
     {
       "DownstreamPathTemplate": "/swagger/{everything}",
@@ -293,30 +273,7 @@
       }
     },
 
-    //{
-    //  "DownstreamPathTemplate": "/configuration",
-    //  "DownstreamScheme": "https",
-    //  "DownstreamHostAndPorts": [
-    //    {
-    //      "Host": "localhost",
-    //      "Port": 44303
-    //    }
-    //  ],
-    //  "UpstreamPathTemplate": "/mfa/configuration",
-    //  "UpstreamHttpMethod": [ "POST" ],
-    //  "RateLimitOptions": {
-    //    "EnableRateLimiting": true,
-    //    "Period": "10s",
-    //    "PeriodTimespan": 5,
-    //    "Limit": 3
-    //  },
-    //  "FileCacheOptions": {
-    //    "TtlSeconds": 15,
-    //    "Region": "HouseholdCache",
-    //    "Header": "Cache-Control",
-    //    "EnableContentHashing": false
-    //  }
-    //},
+  
 
     {
       "DownstreamPathTemplate": "/configuration",
@@ -1331,7 +1288,6 @@
       }
     },
 
-    // TransactionDashboard
     {
       "DownstreamPathTemplate": "/api/TransactionDashboard/sp/{username}",
       "DownstreamScheme": "https",
@@ -1812,64 +1768,7 @@
         "EnableContentHashing": false
       }
     },
-    //{
-    //  "DownstreamPathTemplate": "/api/TransactionDashboard/Download/{Id}",
-    //  "DownstreamScheme": "https",
-    //  "DownstreamHostAndPorts": [
-    //    {
-    //      "Host": "localhost",
-    //      "Port": 44304
-    //    },
-    //    {
-    //      "Host": "localhost",
-    //      "Port": 44305
-    //    }
-    //  ],
-    //  "UpstreamPathTemplate": "/whd/dashboard/download/{Id}",
-    //  "UpstreamHttpMethod": [ "GET" ],
-    //  "LoadBalancerOptions": { "Type": "RoundRobin" },
-    //  "RateLimitOptions": {
-    //    "EnableRateLimiting": true,
-    //    "Period": "10s",
-    //    "PeriodTimespan": 5,
-    //    "Limit": 3
-    //  },
-    //  "FileCacheOptions": {
-    //    "TtlSeconds": 15,
-    //    "Region": "HouseholdCache",
-    //    "Header": "Cache-Control",
-    //    "EnableContentHashing": false
-    //  }
-    //},
-    //{
-    //  "DownstreamPathTemplate": "/api/TransactionDashboard/GetHistory/{Id}",
-    //  "DownstreamScheme": "https",
-    //  "DownstreamHostAndPorts": [
-    //    {
-    //      "Host": "localhost",
-    //      "Port": 44304
-    //    },
-    //    {
-    //      "Host": "localhost",
-    //      "Port": 44305
-    //    }
-    //  ],
-    //  "UpstreamPathTemplate": "/whd/dashboard/history/{Id}",
-    //  "UpstreamHttpMethod": [ "GET" ],
-    //  "LoadBalancerOptions": { "Type": "RoundRobin" },
-    //  "RateLimitOptions": {
-    //    "EnableRateLimiting": true,
-    //    "Period": "10s",
-    //    "PeriodTimespan": 5,
-    //    "Limit": 3
-    //  },
-    //  "FileCacheOptions": {
-    //    "TtlSeconds": 15,
-    //    "Region": "HouseholdCache",
-    //    "Header": "Cache-Control",
-    //    "EnableContentHashing": false
-    //  }
-    //},
+
 
     {
       "DownstreamPathTemplate": "/weatherforecast",
@@ -1903,8 +1802,6 @@
         "EnableContentHashing": false
       }
     },
-
-    // API untuk broadcast
 
     {
       "DownstreamPathTemplate": "/swagger/{everything}",
@@ -2149,30 +2046,6 @@
       }
     },
 
-    //{
-    //  "DownstreamPathTemplate": "/configuration",
-    //  "DownstreamScheme": "https",
-    //  "DownstreamHostAndPorts": [
-    //    {
-    //      "Host": "localhost",
-    //      "Port": 44315
-    //    }
-    //  ],
-    //  "UpstreamPathTemplate": "/broadcast/configuration",
-    //  "UpstreamHttpMethod": [ "POST" ],
-    //  "RateLimitOptions": {
-    //    "EnableRateLimiting": true,
-    //    "Period": "10s",
-    //    "PeriodTimespan": 5,
-    //    "Limit": 3
-    //  },
-    //  "FileCacheOptions": {
-    //    "TtlSeconds": 15,
-    //    "Region": "HouseholdCache",
-    //    "Header": "Cache-Control",
-    //    "EnableContentHashing": false
-    //  }
-    //},
 
     {
       "DownstreamPathTemplate": "/configuration",
@@ -2326,15 +2199,6 @@
       }
     }
 
-    //{
-    //  "UpstreamPathTemplate": "/configurations",
-    //  "UpstreamHttpMethod": [ "GET" ],
-    //  "DownstreamRouteKeys": [
-    //    "MfaConfig",
-    //    "BroadcastConfig"
-    //  ],
-    //  "Aggregator": "DownstreamResponse"
-    //}
 
   ],
 
